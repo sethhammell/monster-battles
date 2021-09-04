@@ -4,13 +4,10 @@
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vue Basics</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
           rel="stylesheet"
         />
-        <!-- <script src="https://unpkg.com/vue@next" defer></script> -->
-        <!-- <script src="app.js" defer></script> -->
       </head>
       <body>
         <header>
@@ -42,11 +39,11 @@
             <h5 v-else-if="draw">It's a Draw!</h5>
             <button @click="startGame">Start New Game</button>
           </section>
-          <section id="controls" v-else>
-            <button @click="attackMonster">ATTACK</button>
-            <button :disabled="mayUseSpecialAttack" @click="specialAttackMonster">SPECIAL ATTACK</button>
-            <button @click="healPlayer">HEAL</button>
-            <button @click="surrender">SURRENDER</button>
+          <section v-else>
+            <base-button @click="attackMonster">ATTACK</base-button>
+            <base-button :disabled="mayUseSpecialAttack" @click="specialAttackMonster">SPECIAL ATTACK</base-button>
+            <base-button @click="healPlayer">HEAL</base-button>
+            <base-button @click="surrender">SURRENDER</base-button>
           </section>
           <section id="log" class="container">
             <h2>Battle Log</h2>
@@ -65,13 +62,12 @@
 </template>
 
 <script>
-function getRandomValue(min, max, neg = false) {
-  var sign = neg ? -1 : 1;
-  return sign * Math.floor(Math.random() * (max - min) + min);
-}
+import BaseButton from '../components/UI/BaseButton.vue';
+import { getRandomValue } from '@/helper-functions/rng.js';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'Battle',
+  components: { BaseButton },
   data() {
     return {
       playerHealth: 100,
@@ -82,12 +78,8 @@ export default {
     };
   },
   computed: {
-    monsterBarStyles() {
-      return { width: this.monsterHealth + '%' };
-    },
-    playerBarStyles() {
-      return { width: this.playerHealth + '%' };
-    },
+    ...mapGetters('playerStats', ['playerBarStyles']),
+    ...mapGetters('monsterStats', ['monsterBarStyles']),
     mayUseSpecialAttack() {
         return this.currentRound % 3 !== 0;
     },
@@ -149,22 +141,11 @@ export default {
       this.addLogMessage('player', 'attack', attackValue);
       this.attackPlayer();
     },
-    attackPlayer() {
-      const attackValue = getRandomValue(8, 15, true);
-      this.adjustPlayerHealth(attackValue);
-      this.addLogMessage('monster', 'attack', attackValue);
-      this.currentRound++;
-    },
+    ...mapActions('playerStats', ['attackPlayer', 'healPlayer']),
     specialAttackMonster() {
       const attackValue = getRandomValue(10, 25, true);
       this.adjustMonsterHealth(attackValue);
       this.addLogMessage('player', 'attack', attackValue);
-      this.attackPlayer();
-    },
-    healPlayer() {
-      const healValue = getRandomValue(8, 20);
-      this.adjustPlayerHealth(healValue);
-      this.addLogMessage('player', 'heal', healValue);
       this.attackPlayer();
     },
     surrender() {
@@ -234,46 +215,6 @@ section {
 #monster h2,
 #player h2 {
   margin: 0.25rem;
-}
-
-#controls {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-button {
-  font: inherit;
-  border: 1px solid #88005b;
-  background-color: #88005b;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  margin: 1rem;
-  width: 12rem;
-  cursor: pointer;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
-}
-
-button:focus {
-  outline: none;
-}
-
-button:hover,
-button:active {
-  background-color: #af0a78;
-  border-color: #af0a78;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
-}
-
-button:disabled {
-  background-color: #ccc;
-  border-color: #ccc;
-  box-shadow: none;
-  color: #3f3f3f;
-  cursor: not-allowed;
 }
 
 #log ul {

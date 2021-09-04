@@ -1,29 +1,29 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Battle from '../views/Battle.vue'
+import { createRouter, createWebHashHistory } from 'vue-router';
+import Battle from '../views/Battle.vue';
+import Shop from '../views/Shop.vue';
+import Upgrades from '../views/Upgrades.vue';
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+      path: '/',
+      name: 'Battle',
+      component: Battle
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
+    path: '/shop',
+    name: 'Shop',
+    component: Shop
   },
   {
-    path: '/battle',
-    name: 'Battle',
-    component: Battle
+    path: '/upgrades',
+    name: 'Upgrades',
+    component: Upgrades
   }
-]
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes
-})
+});
 
-export default router
+export default router;

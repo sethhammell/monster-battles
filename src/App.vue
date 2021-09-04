@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/battle">Battle</router-link>
+    <router-link to="/">Battle</router-link> |
+    <router-link to="/upgrades">Upgrades</router-link> |
+    <router-link to="/shop">Shop</router-link>
   </div>
   <router-view/>
 </template>
