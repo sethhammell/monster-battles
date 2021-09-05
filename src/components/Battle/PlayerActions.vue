@@ -9,21 +9,14 @@
 
 <script>
 import { mapActions } from 'vuex';
-import BaseButton from './BaseButton.vue';
+import BaseButton from './UI/BaseButton.vue';
 
 export default {
   components: { BaseButton },
   methods: {
-    ...mapActions('playerStats', ['attackPlayer', 'healPlayer']),
-    attackMonster() {
-      
-    },
-    specialAttackMonster() {
-
-    },
-    surrender() {
-
-    }
+    ...mapActions('playerStats', ['healPlayer']),
+    ...mapActions('monsterStats', ['attackMonster', 'specialAttackMonster']),
+    ...mapActions('battleStats', ['surrender'])
   }
 }
 </script>

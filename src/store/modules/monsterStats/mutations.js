@@ -12,5 +12,8 @@ export default {
     } else {
       state.currentMonsterHealth -= payload.value;
     }
+  },
+  newGame(state) {
+    state.currentMonsterHealth = state.maxMonsterHealth;
   }
 }

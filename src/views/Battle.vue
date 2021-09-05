@@ -36,19 +36,13 @@
             <h2>Game Over!</h2>
             <h3 v-if="monsterWin">You Lost!</h3>
             <h4 v-else-if="playerWin">Your Won!</h4>
-            <h5 v-else-if="draw">It's a Draw!</h5>
-            <button @click="startGame">Start New Game</button>
+            <button @click="newGame">Start New Game</button>
           </section>
-          <section v-else>
-            <base-button @click="attackMonster">ATTACK</base-button>
-            <base-button :disabled="mayUseSpecialAttack" @click="specialAttackMonster">SPECIAL ATTACK</base-button>
-            <base-button @click="healPlayer">HEAL</base-button>
-            <base-button @click="surrender">SURRENDER</base-button>
-          </section>
+          <player-actions v-else></player-actions>
           <section id="log" class="container">
             <h2>Battle Log</h2>
             <ul>
-              <li v-for="logMessage in logMessages" :key="logMessage" :by="logMessage.actionBy" :type="logMessage.actionType" :value="logMessage.actionValue">
+              <li v-for="logMessage in battleActionsLog" :key="logMessage" :by="logMessage.actionBy" :type="logMessage.actionType" :value="logMessage.actionValue">
                 <span :class="{'log--player': logMessage.actionBy === 'player', 'log--monster': logMessage.actionBy === 'monster'}">{{ logMessage.actionBy === 'player' ? 'Player' : 'Monster' }}</span>
                 <span v-if="logMessage.actionType === 'heal'"> heals themself for <span class="log--heal">{{ logMessage.actionValue }}</span></span>
                 <span v-else> attacks and deals <span class="log--damage">{{ logMessage.actionValue }}</span></span>
@@ -62,102 +56,19 @@
 </template>
 
 <script>
-import BaseButton from '../components/UI/BaseButton.vue';
-import { getRandomValue } from '@/helper-functions/rng.js';
 import { mapActions, mapGetters } from 'vuex';
+import PlayerActions from '../components/Battle/PlayerActions.vue';
 
 export default {
-  components: { BaseButton },
-  data() {
-    return {
-      playerHealth: 100,
-      monsterHealth: 100,
-      currentRound: 0,
-      winner: null,
-      logMessages: []
-    };
-  },
+  components: { PlayerActions },
   computed: {
     ...mapGetters('playerStats', ['playerBarStyles']),
     ...mapGetters('monsterStats', ['monsterBarStyles']),
-    mayUseSpecialAttack() {
-        return this.currentRound % 3 !== 0;
-    },
-    playerWin() {
-      return this.winner === 'player';
-    },
-    monsterWin() {
-      return this.winner === 'monster';
-    },
-    draw() {
-      return this.winner === 'draw';
-    }
-  },
-  watch: {
-    currentRound() {
-      if (this.playerHealth === 0 && this.monsterHealth === 0) {
-        this.winner = 'draw';
-      }
-      else if (this.playerHealth === 0) {
-        this.winner = 'monster';
-      }
-      else if (this.monsterHealth === 0) {
-        this.winner = 'player';
-      }
-    },
+    ...mapGetters('battleStats', ['winner', 'playerWin', 'monsterWin']),
+    ...mapGetters('battleMessages', ['battleActionsLog'])
   },
   methods: {
-    startGame() {
-      this.playerHealth = 100;
-      this.monsterHealth = 100;
-      this.currentRound = 0;
-      this.winner = null;
-    },
-    adjustPlayerHealth(value) {
-      if (this.playerHealth + value > 100) {
-        this.playerHealth = 100;
-      }
-      else if (this.playerHealth + value < 0) {
-        this.playerHealth = 0;
-      }
-      else {
-        this.playerHealth += value;
-      }
-    },
-    adjustMonsterHealth(value) {
-      if (this.monsterHealth + value > 100) {
-        this.monsterHealth = 100;
-      }
-      else if (this.monsterHealth + value < 0) {
-        this.monsterHealth = 0;
-      }
-      else {
-        this.monsterHealth += value;
-      }
-    },
-    attackMonster() {
-      const attackValue = getRandomValue(5, 12, true);
-      this.adjustMonsterHealth(attackValue);
-      this.addLogMessage('player', 'attack', attackValue);
-      this.attackPlayer();
-    },
-    ...mapActions('playerStats', ['attackPlayer', 'healPlayer']),
-    specialAttackMonster() {
-      const attackValue = getRandomValue(10, 25, true);
-      this.adjustMonsterHealth(attackValue);
-      this.addLogMessage('player', 'attack', attackValue);
-      this.attackPlayer();
-    },
-    surrender() {
-      this.winner = 'monster';
-    },
-    addLogMessage(by, type, value) {
-      this.logMessages.unshift({
-        actionBy: by,
-        actionType: type,
-        actionValue: value
-      })
-    }
+    ...mapActions('battleStats', ['newGame'])
   },
 }
 </script>

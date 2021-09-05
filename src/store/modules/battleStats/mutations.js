@@ -1,11 +1,17 @@
+import { characters } from "@/enums/characters";
+
 export default {
   incrementCurrentRound(state) {
     state.currentRound++;
   },
-  updateWinner(state) {
-    state.winner = null;
+  updateWinner(state, payload) {
+    state.winner = payload.winner;
   },
   surrender(state) {
-    state.winner = 'monster';
+    state.winner = characters.MONSTER;
+  },
+  newGame(state) {
+    state.currentRound = 0;
+    state.winner = null;
   }
 }

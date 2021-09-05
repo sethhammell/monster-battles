@@ -5,5 +5,8 @@ export default {
       actionType: payload.type,
       actionValue: payload.value
     })
+  },
+  newGame(state) {
+    state.battleActionsLog = [];
   }
 }
