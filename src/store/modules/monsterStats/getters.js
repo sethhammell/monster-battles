@@ -1,5 +1,5 @@
 export default {
-  monsterBarStyles(state) {
+  monsterHealthBarStyles(state) {
     return { width: state.currentMonsterHealth + '%' };
   },
   currentMonsterHealth(state) {

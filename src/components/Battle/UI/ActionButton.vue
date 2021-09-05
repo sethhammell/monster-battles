@@ -1,11 +1,22 @@
 <template>
     <div>
-        <button>
+        <button :disabled="disable">
             <slot>
             </slot>
         </button>
     </div>
 </template>
+
+<script>
+export default {
+  props: {
+    disable: {
+      type: Boolean,
+      default: false
+    }
+  }
+}
+</script>
 
 <style scoped>
 button {
