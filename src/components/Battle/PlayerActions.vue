@@ -25,8 +25,6 @@ export default {
 </script>
 
 <style scoped>
-@import './UI/BattleStyles.css';
-
 #controls {
   display: flex;
   flex-direction: row;

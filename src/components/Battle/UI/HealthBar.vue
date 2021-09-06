@@ -4,7 +4,11 @@
       <div
         class="healthbar__value"
         :style="character === 'player' ? playerHealthBarStyles : monsterHealthBarStyles"
-      ></div>
+      >
+        <div class="healthbar__number">
+          {{ character === 'player' ? currentPlayerHealth : currentMonsterHealth }}
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -15,8 +19,8 @@ import { mapGetters } from 'vuex';
 export default {
   props: ['character'],
   computed: {
-    ...mapGetters('playerStats', ['playerHealthBarStyles']),
-    ...mapGetters('monsterStats', ['monsterHealthBarStyles']),
+    ...mapGetters('playerStats', ['playerHealthBarStyles', 'currentPlayerHealth']),
+    ...mapGetters('monsterStats', ['monsterHealthBarStyles', 'currentMonsterHealth']),
   }
 }
 </script>
@@ -25,14 +29,24 @@ export default {
 .healthbar {
   width: 100%;
   height: 40px;
-  border: 1px solid #575757;
+  border: 3px solid #000000;
   margin: 1rem 0;
   background: #fde5e5;
+  position: relative;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.26);
 }
 
 .healthbar__value {
   background-color: #00a876;
   width: 100%;
   height: 100%;
+}
+
+.healthbar__number {
+  position: absolute;
+  padding-top: 2.5rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 </style>

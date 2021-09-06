@@ -1,4 +1,5 @@
 export default {
+  playerName: "You",
   currentPlayerHealth: 100,
   maxPlayerHealth: 100,
   currentPlayerMana: 100,

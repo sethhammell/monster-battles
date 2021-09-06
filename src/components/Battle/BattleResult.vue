@@ -21,5 +21,4 @@ export default {
 </script>
 
 <style scoped>
-@import './UI/BattleStyles.css';
 </style>

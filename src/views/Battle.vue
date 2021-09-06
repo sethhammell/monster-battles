@@ -13,9 +13,10 @@
         <monster-header></monster-header>
         <div>
           <health-bar character="monster"></health-bar>
+          <monster-image></monster-image>
+          <battle-log></battle-log>
           <health-bar character="player"></health-bar>
           <mana-bar></mana-bar>
-          <battle-log></battle-log>
           <battle-result v-if="winner"></battle-result>
           <player-actions v-else></player-actions>
         </div>
@@ -42,14 +43,31 @@ export default {
 </script>
 
 <style scoped>
-@import '../components/Battle/UI/BattleStyles.css';
+* {
+  box-sizing: border-box;
+  font-family: "munro";
+  font-size: 105%;
+}
 
-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 0.5rem;
-  background-color: #880017;
-  color: white;
+html {
+  font-family: "Jost", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 12px;
+}
+
+section {
+  width: 90%;
+  max-width: 40rem;
+  margin: auto;
 }
 </style>

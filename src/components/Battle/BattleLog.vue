@@ -1,43 +1,37 @@
 <template>
-  <section id="log" class="container">
-    <h2>Battle Log</h2>
-    <ul>
-      <li
-        v-for="logMessage in battleActionsLog"
-        :key="logMessage"
-      >
-        <span
-          :class="{
-            'log--player': logMessage.actionBy === 'player',
-            'log--monster': logMessage.actionBy === 'monster',
-          }"
-          >{{ logMessage.actionBy === "player" ? "Player" : "Monster" }}</span
-        >
-        <span v-if="logMessage.actionType === 'heal'">
-          heals themself for
-          <span class="log--heal">{{ logMessage.actionValue }}</span></span
-        >
-        <span v-else>
-          attacks and deals
-          <span class="log--damage">{{ logMessage.actionValue }}</span></span
-        >
-      </li>
-    </ul>
+  <section id="log" class="battle-log">
+    {{ battleActionAnimationMessage }}
   </section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters('battleMessages', ['battleActionsLog'])
-  },
-}
+    ...mapGetters("battleMessages", ["battleActionAnimationMessage"]),
+  }
+};
 </script>
 
 <style scoped>
-@import './UI/BattleStyles.css';
+.battle-log {
+  width: 30rem;
+  overflow: hidden;
+  height: 8rem;
+  border: 8px solid black;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.26);
+  display: block;
+  padding-left: 1.5rem;
+  text-align: left;
+  /* outline: #4CAF50 solid 10px; */
+  /* text-overflow: ellipsis;
+  word-wrap: break-word; */
+  /* line-height: 1.8em; */
+  /* border-radius: 0px; */
+}
 
 #log ul {
   list-style: none;
@@ -49,7 +43,7 @@ export default {
   margin: 0.5rem 0;
 }
 
-.log--player {
+/* .log--player {
   color: #7700ff;
 }
 
@@ -63,5 +57,5 @@ export default {
 
 .log--heal {
   color: green;
-}
+} */
 </style>

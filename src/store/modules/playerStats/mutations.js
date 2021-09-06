@@ -29,5 +29,6 @@ export default {
   },
   newGame(state) {
     state.currentPlayerHealth = state.maxPlayerHealth;
+    state.currentPlayerMana = state.maxPlayerMana;
   }
 }

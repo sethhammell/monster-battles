@@ -1,9 +1,9 @@
 <template>
-  <div id="nav">
+  <!-- <div id="nav">
     <router-link to="/">Battle</router-link> |
     <router-link to="/upgrades">Upgrades</router-link> |
     <router-link to="/shop">Shop</router-link>
-  </div>
+  </div> -->
   <router-view/>
 </template>
 
@@ -27,5 +27,17 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+@font-face {
+  font-family: "uni05_53";
+  src: local("uni05_53"),
+   url(./assets/fonts/uni05_53.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "munro";
+  src: local("munro"),
+   url(./assets/fonts/munro.ttf) format("truetype");
 }
 </style>

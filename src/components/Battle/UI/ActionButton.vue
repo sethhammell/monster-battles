@@ -25,11 +25,12 @@ button {
   background-color: #88005b;
   color: white;
   padding: 1rem 2rem;
-  border-radius: 12px;
+  /* border-radius: 12px; */
+  border: 3px solid #000000;
   margin: 1rem;
   width: 12rem;
   cursor: pointer;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.26);
 }
 
 button:focus {

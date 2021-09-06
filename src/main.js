@@ -6,6 +6,7 @@ import ActionButton from './components/Battle/UI/ActionButton.vue';
 import HealthBar from './components/Battle/UI/HealthBar.vue';
 import ManaBar from './components/Battle/UI/ManaBar.vue';
 import MonsterHeader from './components/Battle/UI/MonsterHeader.vue';
+import MonsterImage from './components/Battle/UI/MonsterImage.vue';
 
 import PlayerActions from './components/Battle/PlayerActions';
 import BattleLog from './components/Battle/BattleLog.vue';
@@ -20,6 +21,7 @@ app.component('action-button', ActionButton);
 app.component('health-bar', HealthBar);
 app.component('mana-bar', ManaBar);
 app.component('monster-header', MonsterHeader);
+app.component('monster-image', MonsterImage);
 
 app.component('player-actions', PlayerActions);
 app.component('battle-log', BattleLog);
