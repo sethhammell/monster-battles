@@ -4,7 +4,7 @@
     <router-link to="/upgrades">Upgrades</router-link> |
     <router-link to="/shop">Shop</router-link>
   </div> -->
-  <router-view/>
+  <router-view></router-view>
 </template>
 
 <style>

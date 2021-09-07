@@ -1,17 +1,21 @@
 <template>
   <div>
-    <button :disabled="disable">
-      <slot> </slot>
+    <button @click="redirectToMainMenu">
+      {{ redirectToMainMenuText }}
     </button>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    disable: {
-      type: Boolean,
-      default: false,
+  computed: {
+    redirectToMainMenuText() {
+      return "MAIN MENU";
+    },
+  },
+  methods: {
+    redirectToMainMenu() {
+      this.$router.push("/main-menu");
     },
   },
 };
@@ -24,11 +28,13 @@ button {
   background-color: #88005b;
   color: white;
   padding: 1rem 2rem;
-  /* border-radius: 12px; */
   border: 3px solid #000000;
   margin: 1rem;
-  width: 12rem;
+  width: 16rem;
+  height: 5rem;
+  font-size: 125%;
   cursor: pointer;
+  margin-right: 7rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.26);
 }
 

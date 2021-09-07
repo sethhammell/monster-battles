@@ -10,7 +10,10 @@
         />
       </head>
       <body>
-        <monster-header></monster-header>
+        <div class="battle-header">
+          <monster-header></monster-header>
+          <main-menu-button></main-menu-button>
+        </div>
         <div>
           <health-bar character="monster"></health-bar>
           <monster-image></monster-image>
@@ -27,12 +30,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import BattleLog from '../components/Battle/BattleLog.vue';
-import BattleResult from '../components/Battle/BattleResult.vue';
-import PlayerActions from '../components/Battle/PlayerActions.vue';
-import HealthBar from '../components/Battle/UI/HealthBar.vue';
-import ManaBar from '../components/Battle/UI/ManaBar.vue';
-import MonsterHeader from '../components/Battle/UI/MonsterHeader.vue';
+import BattleLog from '../components/battle/BattleLog.vue';
+import BattleResult from '../components/battle/BattleResult.vue';
+import PlayerActions from '../components/battle/PlayerActions.vue';
+import HealthBar from '../components/battle/UI/HealthBar.vue';
+import ManaBar from '../components/battle/UI/ManaBar.vue';
+import MonsterHeader from '../components/battle/UI/MonsterHeader.vue';
 
 export default {
   components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar },
@@ -55,6 +58,12 @@ html {
 
 body {
   margin: 0;
+}
+
+.battle-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .container {

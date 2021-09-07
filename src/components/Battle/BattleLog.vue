@@ -33,6 +33,7 @@ export default {
   /* border-radius: 0px; */
 }
 
+/* 
 #log ul {
   list-style: none;
   margin: 0;
@@ -41,7 +42,7 @@ export default {
 
 #log li {
   margin: 0.5rem 0;
-}
+} */
 
 /* .log--player {
   color: #7700ff;
