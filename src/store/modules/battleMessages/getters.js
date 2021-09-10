@@ -1,16 +1,19 @@
 export default {
-  latestBattleAction(state) {
-    if (state.battleActionsLog !== null && state.battleActionsLog.length > 0) {
-      return state.battleActionsLog[0];
+  latestBattleMessage(state) {
+    if (state.battleMessagesLog !== null && state.battleMessagesLog.length > 0) {
+      return state.battleMessagesLog[0];
     }
+  },
+  battleMessagesLog(state) {
+    return state.battleMessagesLog;
   },
   battleActionsLog(state) {
     return state.battleActionsLog;
   },
-  battleActionAnimationMessage(state) {
-    return state.battleActionAnimationMessage;
+  battleAnimationMessage(state) {
+    return state.battleAnimationMessage;
   },
-  battleActionAnimationMessageSpeed(state) {
-    return state.battleActionAnimationMessageSpeed;
+  battleAnimationMessageSpeed(state) {
+    return state.battleAnimationMessageSpeed;
   }
 }

@@ -12,20 +12,25 @@ export default {
       battleAction += ' and dealt ' + payload.value + ' damage.';
     }
     commit('logBattleAction', { battleAction: battleAction });
-    dispatch('battleActionAnimation');
+    dispatch('battleMessageAnimation');
   },
-  battleActionAnimation({ commit, getters }) {
-    commit('resetBattleActionAnimationMessage');
-    var currentMessage = getters.latestBattleAction;
-    var currentBattleActionsLogLength = getters.battleActionsLog.length;
+  battleMessageAnimation({ commit, getters }) {
+    commit('resetBattleAnimationMessage');
+    var currentMessage = getters.latestBattleMessage;
+    var currentBattleActionsLogLength = getters.battleMessagesLog.length;
     var i = 0;
     var interval = setInterval(() => {
-      if (currentBattleActionsLogLength !== getters.battleActionsLog.length || i >= currentMessage.length) {
+      if (currentBattleActionsLogLength !== getters.battleMessagesLog.length || i >= currentMessage.length) {
         clearInterval(interval);
       }
       else {
-        commit('appendBattleActionAnimationMessage', { char: currentMessage[i++] });
+        commit('appendBattleAnimationMessage', { char: currentMessage[i++] });
       }
-    }, getters.battleActionAnimationMessageSpeed);
+    }, getters.battleAnimationMessageSpeed);
+  },
+  enemyApproaches({ commit, dispatch, rootGetters }) {
+    var message = 'An enemy ' + rootGetters['monsterStats/monsterName'] + ' approaches.';
+    commit('logBattleMessage', { battleMessage: message });
+    dispatch('battleMessageAnimation');
   }
 }

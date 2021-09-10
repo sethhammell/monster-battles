@@ -1,6 +1,6 @@
 <template>
   <section id="log" class="battle-log">
-    {{ battleActionAnimationMessage }}
+    {{ battleAnimationMessage }}
   </section>
 </template>
 
@@ -9,7 +9,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters("battleMessages", ["battleActionAnimationMessage"]),
+    ...mapGetters("battleMessages", ["battleAnimationMessage"]),
   }
 };
 </script>

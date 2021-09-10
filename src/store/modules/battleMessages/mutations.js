@@ -1,15 +1,20 @@
 export default {
   logBattleAction(state, payload) {
+    state.battleMessagesLog.unshift(payload.battleAction);
     state.battleActionsLog.unshift(payload.battleAction);
   },
+  logBattleMessage(state, payload) {
+    state.battleMessagesLog.unshift(payload.battleMessage);
+  },
   newGame(state) {
+    state.battleMessagesLog = [];
     state.battleActionsLog = [];
-    state.battleActionAnimationMessage = '';
+    state.battleAnimationMessage = '';
   },
-  appendBattleActionAnimationMessage(state, payload) {
-    state.battleActionAnimationMessage += payload.char;
+  appendBattleAnimationMessage(state, payload) {
+    state.battleAnimationMessage += payload.char;
   },
-  resetBattleActionAnimationMessage(state) {
-    state.battleActionAnimationMessage = '';
+  resetBattleAnimationMessage(state) {
+    state.battleAnimationMessage = '';
   }
 }

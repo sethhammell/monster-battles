@@ -9,11 +9,12 @@ export default {
       commit('updateWinner', { winner: characters.MONSTER })
     }
   },
-  newGame({ commit }) {
+  newGame({ commit, dispatch }) {
     commit('newGame');
     commit('playerStats/newGame', null, { root: true });
     commit('monsterStats/newGame', null, { root: true });
-    commit('battleStats/newGame', null, { root: true });
+    commit('battleMessages/newGame', null, { root: true });
+    dispatch('battleMessages/enemyApproaches', null, { root: true });
   },
   surrender({ commit }) {
     commit('surrender');

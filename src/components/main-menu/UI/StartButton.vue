@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   computed: {
     redirectToBattleText() {
@@ -16,7 +18,9 @@ export default {
   methods: {
     redirectToBattle() {
       this.$router.push("/battle");
+      this.newGame();
     },
+    ...mapActions('battleStats', ['newGame'])
   },
 };
 </script>
