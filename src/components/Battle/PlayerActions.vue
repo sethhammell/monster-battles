@@ -9,6 +9,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import { playerActions } from '@/enums/playerActions';
 import ActionButton from './UI/ActionButton.vue';
 
 export default {
@@ -17,9 +18,16 @@ export default {
     ...mapGetters('playerStats', ['canUseSpecialAttack'])
   },
   methods: {
-    ...mapActions('playerStats', ['healPlayer']),
-    ...mapActions('monsterStats', ['attackMonster', 'specialAttackMonster']),
-    ...mapActions('battleStats', ['surrender'])
+    ...mapActions('playerStats', ['playerAction', 'surrender']),
+    attackMonster() {
+      this.playerAction({ action: playerActions.ATTACK });
+    },
+    specialAttackMonster() {
+      this.playerAction({ action: playerActions.SPECIAL_ATTACK });
+    },
+    healPlayer() {
+      this.playerAction({ action: playerActions.HEAL });
+    }
   }
 }
 </script>

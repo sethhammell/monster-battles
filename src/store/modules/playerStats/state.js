@@ -4,5 +4,7 @@ export default {
   maxPlayerHealth: 100,
   currentPlayerMana: 100,
   maxPlayerMana: 100,
-  specialAttackManaCost: 22
+  specialAttackManaCost: 22,
+  playerActionsVisibility: true,
+  playerHealthBarAnimationSpeed: 1 // 50
 }

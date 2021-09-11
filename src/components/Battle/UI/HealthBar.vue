@@ -3,7 +3,7 @@
     <div class="healthbar">
       <div
         class="healthbar__value"
-        :style="character === 'player' ? playerHealthBarStyles : monsterHealthBarStyles"
+        :style="character === 'player' ? playerHealthBarStyles + playerHealthBarColor : monsterHealthBarStyles + monsterHealthBarColor"
       >
         <div class="healthbar__number">
           {{ character === 'player' ? currentPlayerHealth : currentMonsterHealth }}
@@ -19,8 +19,8 @@ import { mapGetters } from 'vuex';
 export default {
   props: ['character'],
   computed: {
-    ...mapGetters('playerStats', ['playerHealthBarStyles', 'currentPlayerHealth']),
-    ...mapGetters('monsterStats', ['monsterHealthBarStyles', 'currentMonsterHealth']),
+    ...mapGetters('playerStats', ['playerHealthBarStyles', 'playerHealthBarColor', 'currentPlayerHealth']),
+    ...mapGetters('monsterStats', ['monsterHealthBarStyles', 'monsterHealthBarColor', 'currentMonsterHealth']),
   }
 }
 </script>
@@ -37,7 +37,6 @@ export default {
 }
 
 .healthbar__value {
-  background-color: #00a876;
   width: 100%;
   height: 100%;
 }

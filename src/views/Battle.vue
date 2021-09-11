@@ -21,7 +21,7 @@
           <health-bar character="player"></health-bar>
           <mana-bar></mana-bar>
           <battle-result v-if="winner"></battle-result>
-          <player-actions v-else></player-actions>
+          <player-actions v-show="playerActionsVisibility" v-else></player-actions>
         </div>
       </body>
     </html>
@@ -40,7 +40,8 @@ import MonsterHeader from '../components/battle/UI/MonsterHeader.vue';
 export default {
   components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar },
   computed: {
-    ...mapGetters('battleStats', ['winner'])
+    ...mapGetters('battleStats', ['winner']),
+    ...mapGetters('playerStats', ['playerActionsVisibility'])
   }
 }
 </script>

@@ -30,5 +30,11 @@ export default {
   newGame(state) {
     state.currentPlayerHealth = state.maxPlayerHealth;
     state.currentPlayerMana = state.maxPlayerMana;
+  },
+  showPlayerActions(state) {
+    state.playerActionsVisibility = true;
+  },
+  hidePlayerActions(state) {
+    state.playerActionsVisibility = false;
   }
 }
