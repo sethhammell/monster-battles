@@ -2,6 +2,7 @@
 node_modules
 /dist
 
+git config core.ignorecase false
 
 # local env files
 .env.local
