@@ -12,5 +12,8 @@ export default {
   },
   monsterWin(getters) {
     return getters.winner === characters.MONSTER;
+  },
+  gameOver(getters) {
+    return getters.winner !== null;
   }
 }

@@ -21,7 +21,7 @@
           <health-bar character="player"></health-bar>
           <mana-bar></mana-bar>
           <battle-result v-if="winner"></battle-result>
-          <player-actions v-show="playerActionsVisibility" v-else></player-actions>
+          <player-actions v-show="playerActionsVisibility"></player-actions>
         </div>
       </body>
     </html>
@@ -62,9 +62,11 @@ body {
 }
 
 .battle-header {
+  width: 1900px;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .container {

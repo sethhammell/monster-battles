@@ -4,6 +4,7 @@ import App from './App.vue'
 
 import MainMenuButton from './components/battle/UI/MainMenuButton.vue';
 import ActionButton from './components/battle/UI/ActionButton.vue';
+import BattleResultButton from './components/battle/UI/BattleResultButton.vue';
 import HealthBar from './components/battle/UI/HealthBar.vue';
 import ManaBar from './components/battle/UI/ManaBar.vue';
 import MonsterHeader from './components/battle/UI/MonsterHeader.vue';
@@ -23,6 +24,7 @@ const app = createApp(App);
 
 app.component('main-menu-button', MainMenuButton);
 app.component('action-button', ActionButton);
+app.component('battle-result-button', BattleResultButton);
 app.component('health-bar', HealthBar);
 app.component('mana-bar', ManaBar);
 app.component('monster-header', MonsterHeader);

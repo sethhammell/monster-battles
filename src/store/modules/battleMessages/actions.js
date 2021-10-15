@@ -36,5 +36,32 @@ export default {
     var message = 'An enemy ' + rootGetters['monsterStats/monsterName'] + ' approaches.';
     commit('logBattleMessage', { battleMessage: message });
     dispatch('battleMessageAnimation');
+  },
+  battleResultTextAnimation({ commit, getters }, payload) {
+    return new Promise((resolve) => {
+      const currentMessage = payload.currentMessage;
+      const length = currentMessage.length;
+      var i = 0;
+
+      var interval = setInterval(() => {
+        if (i >= length) {
+          clearInterval(interval);
+          resolve();
+        }
+        else if (i < length) {
+          commit('append' + payload.variable, { char: currentMessage[i] });
+        }
+        i++;
+      }, getters.battleAnimationMessageSpeed);
+    });
+  },
+  displayBattleResults({ commit, dispatch, rootGetters }) {
+    var headerMessage = rootGetters['battleStats/playerWin'] ? 'Victory!' : 'Game Over';
+    var resultMessage = rootGetters['battleStats/playerWin'] ? 'You defeated the ' + rootGetters['monsterStats/monsterName'] + '.' : 'You were defeated by the ' + rootGetters['monsterStats/monsterName'] + '.';
+    dispatch('battleResultTextAnimation', { currentMessage: headerMessage, variable: 'BattleResultHeader' }).then(() => {
+      dispatch('battleResultTextAnimation', { currentMessage: resultMessage, variable: 'BattleResultMessage' }).then(() => {
+        commit('showBattleResultButtons');
+      });
+    });
   }
 }

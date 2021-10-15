@@ -13,8 +13,8 @@ header {
   border: 3px solid #000000;
   color: white;
   text-align: center;
-  position: absolute;
   padding-bottom: 0rem;
+  position: relative;
   left: 50%;
   transform: translate(-50%);
 }

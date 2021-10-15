@@ -27,16 +27,21 @@ export default {
     commit('decreasePlayerMana', { value: manaCost });
     dispatch('endPlayerTurn', { by: characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
   },
-  surrender({ commit }) {
-    commit('battleStats/surrender', null, { root: true });
+  surrender({ dispatch }) {
+    dispatch('battleStats/updateWinner', { winner: characters.MONSTER }, { root: true });
   },
-  endPlayerTurn({ dispatch }, payload) {
+  endPlayerTurn({ commit, dispatch, rootGetters }, payload) {
     dispatch('battleMessages/logBattleAction', { by: payload.by, type: payload.type, value: payload.value }, { root: true });
     dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(() => {
       var animationFunction = payload.increase ? 'playerStats/playerHealthBarChangeAnimation' : 'monsterStats/monsterHealthBarChangeAnimation';
       dispatch(animationFunction, { increase: payload.increase, value: payload.value }, { root: true }).then(() => {
-        dispatch('battleStats/updateWinner', null, { root: true });
-        dispatch('monsterStats/monsterAction', null, { root: true });
+        dispatch('battleStats/checkForWinner', null, { root: true });
+        if (rootGetters['battleStats/gameOver']) {
+          commit('showPlayerActions');
+        }
+        else {
+          dispatch('monsterStats/monsterAction', null, { root: true });
+        }
       });
     });
   },

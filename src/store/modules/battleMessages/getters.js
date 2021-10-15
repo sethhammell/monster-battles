@@ -13,6 +13,15 @@ export default {
   battleAnimationMessage(state) {
     return state.battleAnimationMessage;
   },
+  battleResultHeader(state) {
+    return state.battleResultHeader;
+  },
+  battleResultMessage(state) {
+    return state.battleResultMessage;
+  },
+  battleResultButtonsVisibility(state) {
+    return state.battleResultButtonsVisibility;
+  },
   battleAnimationMessageSpeed(state) {
     return state.battleAnimationMessageSpeed;
   }

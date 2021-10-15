@@ -6,7 +6,7 @@
 
 <style scoped>
 header {
-  width: 65%;
+  width: 1250px;
   box-shadow: 0 9px 10px rgba(0, 0, 0, 0.26);
   padding: 0.5rem;
   background-color: #880017;

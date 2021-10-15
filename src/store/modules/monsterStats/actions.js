@@ -11,7 +11,7 @@ export default {
     dispatch('battleMessages/logBattleAction', payload, { root: true });
     dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(() => {
       dispatch('playerStats/playerHealthBarChangeAnimation', { increase: false, value: payload.value }, { root: true }).then(() => {
-        dispatch('battleStats/updateWinner', null, { root: true });
+        dispatch('battleStats/checkForWinner', null, { root: true });
         commit('playerStats/showPlayerActions', null, { root: true });
       });
     });

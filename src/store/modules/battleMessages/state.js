@@ -2,5 +2,8 @@ export default {
   battleMessagesLog: [],
   battleActionsLog: [],
   battleAnimationMessage: '',
-  battleAnimationMessageSpeed: 1 // 40
+  battleResultHeader: '',
+  battleResultMessage: '',
+  battleResultButtonsVisibility: false,
+  battleAnimationMessageSpeed: 1 // 32
 }
