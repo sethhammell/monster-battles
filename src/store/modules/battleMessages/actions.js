@@ -4,12 +4,16 @@ import { playerActions } from "@/enums/playerActions";
 export default {
   logBattleAction({ commit, rootGetters }, payload) {
     var battleAction = '';
-    battleAction += payload.by === characters.PLAYER ? rootGetters['playerStats/playerName'] : rootGetters['monsterStats/monsterName'];
+    const playerName = rootGetters['playerStats/playerName'];
+    const monsterName = rootGetters['monsterStats/monsterName'];
+
+    battleAction += payload.by === characters.PLAYER ? playerName : monsterName;
     battleAction += ' ' + payload.type + 'ed ';
     if (payload.type === playerActions.HEAL) {
       battleAction += payload.value + ' health.';
     } else {
-      battleAction += 'and dealt ' + payload.value + ' damage.';
+      battleAction += payload.by === characters.PLAYER ? monsterName : playerName;
+      battleAction += ' and dealt ' + payload.value + ' damage.';
     }
     commit('logBattleAction', { battleAction: battleAction });
   },

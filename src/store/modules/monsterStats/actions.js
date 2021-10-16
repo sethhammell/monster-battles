@@ -1,5 +1,5 @@
 import { characters } from "@/enums/characters";
-import { monsterActions } from '@/enums/monsterActions';
+import { monsterActions } from "@/enums/monsterActions";
 import { getRandomValue } from "@/helper-functions/rng"
 
 export default {
