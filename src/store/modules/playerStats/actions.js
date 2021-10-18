@@ -1,29 +1,16 @@
-import { getRandomValue } from '@/helper-functions/rng.js';
 import { characters } from '@/enums/characters';
-import { playerActions } from '@/enums/playerActions';
 
 export default {
   playerAction({ commit, dispatch, getters }, payload) {
     commit('battleStats/incrementCurrentRound', null, { root: true });
     commit('hidePlayerActions');
 
-    var actionValue = 0;
-    var manaCost = 0;
-    var increase = false;
+    var playerAction = getters.playerBattleActions[payload.action]
 
-    switch (payload.action) {
-      case playerActions.ATTACK:
-        actionValue = getRandomValue(5, 12);
-        break;
-      case playerActions.SPECIAL_ATTACK:
-        actionValue = getRandomValue(8, 20);
-        manaCost = getters.specialAttackManaCost;
-        break;
-      case playerActions.HEAL:
-        actionValue = getRandomValue(8, 20);
-        increase = true;
-        break;
-    }
+    var actionValue = playerAction.getActionValue();
+    var manaCost = playerAction.manaCost;
+    var increase = playerAction.heal;
+
     commit('decreasePlayerMana', { value: manaCost });
     dispatch('endPlayerTurn', { by: characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
   },

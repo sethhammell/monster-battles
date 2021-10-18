@@ -3,19 +3,21 @@ import { characters } from "@/enums/characters";
 import { playerActions } from "@/enums/playerActions";
 const { Character } = require("@/classes/character");
 
-var playerAttack = BattleAction(
+var playerAttack = new BattleAction(
   playerActions.ATTACK,
   8,
   characters.MONSTER,
 )
 
-var playerSpecialAttack = BattleAction(
+var playerSpecialAttack = new BattleAction(
   playerActions.SPECIAL_ATTACK,
   14,
-  characters.MONSTER
+  characters.MONSTER,
+  false,
+  22
 )
 
-var playerHeal = BattleAction(
+var playerHeal = new BattleAction(
   playerActions.HEAL,
   14,
   characters.PLAYER,
@@ -24,11 +26,12 @@ var playerHeal = BattleAction(
 
 var playerBattleActions = [playerAttack, playerSpecialAttack, playerHeal]
 
-export var player = Character(
+export var player = new Character(
   "You",
   playerBattleActions,
   100,
   100,
+  null,
   100,
   100,
 )

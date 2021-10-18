@@ -1,11 +1,15 @@
 import { characters } from "@/enums/characters";
-import { monsterActions } from "@/enums/monsterActions";
 import { getRandomValue } from "@/helper-functions/rng"
 
 export default {
-  monsterAction({ dispatch }) {
-    const attackValue = getRandomValue(8, 15);
-    dispatch('endMonsterTurn', { by: characters.MONSTER, type: monsterActions.ATTACK, value: attackValue });
+  monsterAction({ dispatch, getters }) {
+    var randomBattleAction = getRandomValue(0, getters.monsterBattleActionsList.length - 1);
+    var monsterAction = getters.monsterBattleActionsList[randomBattleAction];
+
+    var actionValue = monsterAction.getActionValue();
+    var actionName = monsterAction.name;
+
+    dispatch('endMonsterTurn', { by: characters.MONSTER, type: actionName, value: actionValue });
   },
   endMonsterTurn({ commit, dispatch }, payload) {
     dispatch('battleMessages/logBattleAction', payload, { root: true });

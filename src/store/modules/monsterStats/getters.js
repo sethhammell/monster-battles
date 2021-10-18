@@ -2,7 +2,7 @@ import { threeBarGradient } from "@/helper-functions/gradient";
 
 export default {
   monsterHealthBarStyles(state) {
-    var width = state.currentMonsterHealth / state.maxMonsterHealth * 100;
+    var width = state.currentMonsterStats.currentHealth / state.currentMonsterStats.maxHealth * 100;
     var style = 'width: ' + width.toString() + '%;';
     return style;
   },
@@ -11,20 +11,26 @@ export default {
     const halfBar = [255, 255, 0];
     const emptyBar = [230, 27, 27];
 
-    var rgb = threeBarGradient(fullBar, halfBar, emptyBar, state.currentMonsterHealth, state.maxMonsterHealth);
+    var rgb = threeBarGradient(fullBar, halfBar, emptyBar, state.currentMonsterStats.currentHealth, state.currentMonsterStats.maxHealth);
     var style = 'background-color: rgb(' + rgb.red.toString() + ', ' + rgb.green.toString() + ', ' + rgb.blue.toString() + ');';
     return style;
   },
   monsterName(state) {
-    return state.monsterName;
+    return state.currentMonsterStats.name;
   },
   currentMonsterHealth(state) {
-    return state.currentMonsterHealth;
+    return state.currentMonsterStats.currentHealth;
   },
   maxMonsterHealth(state) {
-    return state.maxMonsterHealth;
+    return state.currentMonsterStats.maxHealth;
+  },
+  monsterImage(state) {
+    return state.currentMonsterStats.image;
   },
   monsterHealthBarAnimationSpeed(state) {
     return state.monsterHealthBarAnimationSpeed;
+  },
+  monsterBattleActionsList(state) {
+    return state.currentMonsterStats.battleActionsList;
   }
 }

@@ -1,19 +1,13 @@
+import { boundedAdd, boundedSub } from "@/helper-functions/boundedOperations";
+
 export default {
   increaseMonsterHealth(state, payload) {
-    if (state.currentMonsterHealth + payload.value > state.maxMonsterHealth) {
-      state.currentMonsterHealth = state.maxMonsterHealth;
-    } else {
-      state.currentMonsterHealth += payload.value;
-    }
+    state.currentMonsterStats.currentHealth = boundedAdd(state.currentMonsterStats.currentHealth, payload.value, state.currentMonsterStats.maxHealth);
   },
   decreaseMonsterHealth(state, payload) {
-    if (state.currentMonsterHealth - payload.value < 0) {
-      state.currentMonsterHealth = 0;
-    } else {
-      state.currentMonsterHealth -= payload.value;
-    }
+    state.currentMonsterStats.currentHealth = boundedSub(state.currentMonsterStats.currentHealth, payload.value);
   },
   newGame(state) {
-    state.currentMonsterHealth = state.maxMonsterHealth;
+    state.currentMonsterStats.currentHealth = state.currentMonsterStats.maxHealth;
   }
 }

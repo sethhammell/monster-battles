@@ -1,35 +1,21 @@
+import { boundedAdd, boundedSub } from "@/helper-functions/boundedOperations";
+
 export default {
   increasePlayerHealth(state, payload) {
-    if (state.currentPlayerHealth + payload.value > state.maxPlayerHealth) {
-      state.currentPlayerHealth = state.maxPlayerHealth;
-    } else {
-      state.currentPlayerHealth += payload.value;
-    }
+    state.playerStats.currentHealth = boundedAdd(state.playerStats.currentHealth, payload.value, state.playerStats.maxHealth);
   },
   decreasePlayerHealth(state, payload) {
-    if (state.currentPlayerHealth - payload.value < 0) {
-      state.currentPlayerHealth = 0;
-    } else {
-      state.currentPlayerHealth -= payload.value;
-    }
+    state.playerStats.currentHealth = boundedSub(state.playerStats.currentHealth, payload.value);
   },
   increasePlayerMana(state, payload) {
-    if (state.currentPlayerMana + payload.value > state.maxPlayerv) {
-      state.currentPlayerMana = state.maxPlayerMana;
-    } else {
-      state.currentPlayerMana += payload.value;
-    }
+    state.playerStats.currentMana = boundedAdd(state.playerStats.currentMana, payload.value, state.playerStats.maxMana);
   },
   decreasePlayerMana(state, payload) {
-    if (state.currentPlayerMana - payload.value < 0) {
-      state.currentPlayerMana = 0;
-    } else {
-      state.currentPlayerMana -= payload.value;
-    }
+    state.playerStats.currentMana = boundedSub(state.playerStats.currentMana, payload.value);
   },
   newGame(state) {
-    state.currentPlayerHealth = state.maxPlayerHealth;
-    state.currentPlayerMana = state.maxPlayerMana;
+    state.playerStats.currentHealth = state.playerStats.maxHealth;
+    state.playerStats.currentMana = state.playerStats.maxMana;
   },
   showPlayerActions(state) {
     state.playerActionsVisibility = true;

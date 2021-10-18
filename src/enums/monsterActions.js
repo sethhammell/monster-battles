@@ -1,3 +1,4 @@
 export const monsterActions = {
-  ATTACK: 'attack'
+  ATTACK: 'attack',
+  STRONG_ATTACK: 'strong attack'
 }

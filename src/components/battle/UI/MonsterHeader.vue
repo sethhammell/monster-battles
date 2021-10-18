@@ -1,8 +1,18 @@
 <template>
   <header>
-    <h1>Level 1 Moss Golem</h1>
+    <h1>{{ monsterName }}</h1>
   </header>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters("monsterStats", ["monsterName"]),
+  },
+}
+</script>
 
 <style scoped>
 header {

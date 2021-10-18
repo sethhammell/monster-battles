@@ -1,6 +1,7 @@
+import { monsters } from "@/characterData/monsters/monsters";
+
 export default {
-  monsterName: 'Moss Golem',
-  currentMonsterHealth: 100,
-  maxMonsterHealth: 100,
+  monsters: monsters,
+  currentMonsterStats: monsters[0],
   monsterHealthBarAnimationSpeed: 1 // 50
 }

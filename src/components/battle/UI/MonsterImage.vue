@@ -3,13 +3,11 @@
 </template>
 
 <script>
-import image from '@/assets/monsters/mossGolemMonster.png';
+import { mapGetters } from 'vuex'
 
 export default {
-  data() {
-    return {
-        monsterImage: image
-    }
-  }
+  computed: {
+    ...mapGetters("monsterStats", ["monsterImage"]),
+  },
 }
 </script>
