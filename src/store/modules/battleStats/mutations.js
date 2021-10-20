@@ -8,5 +8,8 @@ export default {
   newGame(state) {
     state.currentRound = 0;
     state.winner = null;
+  },
+  toggleOptionsMenu(state) {
+    state.inOptionsMenu = !state.inOptionsMenu;
   }
 }

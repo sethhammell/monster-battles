@@ -7,6 +7,9 @@ export default {
   winner(state) {
     return state.winner;
   },
+  inOptionsMenu(state) {
+    return state.inOptionsMenu;
+  },
   playerWin(getters) {
     return getters.winner === characters.PLAYER;
   },

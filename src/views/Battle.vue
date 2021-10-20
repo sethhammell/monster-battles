@@ -12,7 +12,7 @@
       <body>
         <div class="battle-header">
           <monster-header></monster-header>
-          <main-menu-button></main-menu-button>
+          <options-button></options-button>
         </div>
         <div>
           <health-bar character="monster"></health-bar>
@@ -20,7 +20,8 @@
           <battle-log></battle-log>
           <health-bar character="player"></health-bar>
           <mana-bar></mana-bar>
-          <battle-result v-if="winner"></battle-result>
+          <battle-result v-show="winner"></battle-result>
+          <options-menu v-show="inOptionsMenu"></options-menu>
           <player-actions v-show="playerActionsVisibility"></player-actions>
         </div>
       </body>
@@ -32,15 +33,17 @@
 import { mapGetters } from 'vuex';
 import BattleLog from '../components/battle/BattleLog.vue';
 import BattleResult from '../components/battle/BattleResult.vue';
+import OptionsMenu from '../components/battle/OptionsMenu.vue';
 import PlayerActions from '../components/battle/PlayerActions.vue';
 import HealthBar from '../components/battle/UI/HealthBar.vue';
 import ManaBar from '../components/battle/UI/ManaBar.vue';
 import MonsterHeader from '../components/battle/UI/MonsterHeader.vue';
+import OptionsButton from '../components/battle/UI/OptionsButton.vue';
 
 export default {
-  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar },
+  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu },
   computed: {
-    ...mapGetters('battleStats', ['winner']),
+    ...mapGetters('battleStats', ['winner', 'inOptionsMenu']),
     ...mapGetters('playerStats', ['playerActionsVisibility'])
   }
 }

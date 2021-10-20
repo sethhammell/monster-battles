@@ -1,4 +1,5 @@
 export default {
     currentRound: 0,
-    winner: null
+    winner: null,
+    inOptionsMenu: false
 }

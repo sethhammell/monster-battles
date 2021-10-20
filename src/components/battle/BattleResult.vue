@@ -6,7 +6,7 @@
         <h3>{{ battleResultMessage }}</h3>
       </div>
       <div v-show="battleResultButtonsVisibility">
-        <battle-result-button @click="newGame">NEW GAME</battle-result-button>
+        <battle-result-button @click="newGame">{{ newGameText }}</battle-result-button>
       </div>
     </div>
   </div>
@@ -21,6 +21,9 @@ export default {
   computed: {
     ...mapGetters("battleStats", ["playerWin", "monsterWin"]),
     ...mapGetters("battleMessages", ["battleResultHeader", "battleResultMessage", "battleResultButtonsVisibility"]),
+    newGameText() {
+      return "NEW GAME";
+    }
   },
   methods: {
     ...mapActions("battleStats", ["newGame"]),

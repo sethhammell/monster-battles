@@ -14,7 +14,7 @@ button {
   color: white;
   padding: 1rem 2rem;
   border: 3px solid #000000;
-  margin: 1rem;
+  margin: 0.5rem;
   width: 12rem;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.26);

@@ -6,7 +6,6 @@
       :disable="action.manaCost > currentPlayerMana"
       @click="playerAction({ action: action.name })"
     >{{ action.name.toUpperCase() }}</action-button>
-    <action-button @click="surrender">SURRENDER</action-button>
   </section>
 </template>
 
@@ -20,7 +19,7 @@ export default {
     ...mapGetters("playerStats", ["playerBattleActionsList", "currentPlayerMana"]),
   },
   methods: {
-    ...mapActions("playerStats", ["playerAction", "surrender"]),
+    ...mapActions("playerStats", ["playerAction"]),
   },
 };
 </script>

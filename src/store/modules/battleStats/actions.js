@@ -19,5 +19,8 @@ export default {
     commit('monsterStats/newGame', null, { root: true });
     commit('battleMessages/newGame', null, { root: true });
     dispatch('battleMessages/enemyApproaches', null, { root: true });
+  },
+  toggleOptionsMenu({ commit }) {
+    commit('toggleOptionsMenu');
   }
 }
