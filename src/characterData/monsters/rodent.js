@@ -23,5 +23,6 @@ export var rodent = new Character(
   monsterBattleActions,
   100,
   100,
+  3,
   image
 );

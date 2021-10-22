@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>{{ monsterName }}</h1>
+    <h1>{{ monsterLevelName }}</h1>
   </header>
 </template>
 
@@ -9,7 +9,7 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters("monsterStats", ["monsterName"]),
+    ...mapGetters("monsterStats", ["monsterLevelName"]),
   },
 }
 </script>

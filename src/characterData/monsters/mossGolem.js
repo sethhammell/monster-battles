@@ -23,5 +23,6 @@ export var mossGolem = new Character(
   monsterBattleActions,
   100,
   100,
+  2,
   image
 );

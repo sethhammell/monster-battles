@@ -18,6 +18,9 @@ export default {
   monsterName(state) {
     return state.currentMonsterStats.name;
   },
+  monsterLevelName(state) {
+    return state.currentMonsterStats.getLevelName();
+  },
   currentMonsterHealth(state) {
     return state.currentMonsterStats.currentHealth;
   },

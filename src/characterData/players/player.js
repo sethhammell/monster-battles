@@ -13,6 +13,7 @@ var playerSpecialAttack = new BattleAction(
   playerActions.SPECIAL_ATTACK,
   14,
   characters.MONSTER,
+  1,
   false,
   22
 )
@@ -21,6 +22,7 @@ var playerHeal = new BattleAction(
   playerActions.HEAL,
   14,
   characters.PLAYER,
+  1,
   true
 )
 
@@ -31,6 +33,7 @@ export var player = new Character(
   playerBattleActions,
   100,
   100,
+  3,
   null,
   100,
   100,
