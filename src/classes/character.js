@@ -1,11 +1,12 @@
 export class Character {
-  constructor(name, battleActions, currentHealth, maxHealth, level = 1, image = null, currentMana = 0, maxMana = 0, levelUpAmount = 0.125) {
+  constructor(name, battleActions, currentHealth, maxHealth, level = 1, image = null, backgroundImage = null, currentMana = 0, maxMana = 0, levelUpAmount = 0.125) {
     this.name = name;
     this.battleActions = this.storeBattleActions(battleActions);
     this.battleActionsList = battleActions;
     this.currentHealth = currentHealth;
     this.maxHealth = maxHealth;
     this.image = image;
+    this.backgroundImage = backgroundImage;
     this.currentMana = currentMana;
     this.maxMana = maxMana;
     this.level = level;

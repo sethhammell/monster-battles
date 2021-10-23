@@ -9,7 +9,7 @@
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body class="background" :style="{ 'background-image': 'url(' + monsterBackgroundImage + ')' }">
         <div class="battle-header">
           <monster-header></monster-header>
           <options-button></options-button>
@@ -38,13 +38,15 @@ import PlayerActions from '../components/battle/PlayerActions.vue';
 import HealthBar from '../components/battle/UI/HealthBar.vue';
 import ManaBar from '../components/battle/UI/ManaBar.vue';
 import MonsterHeader from '../components/battle/UI/MonsterHeader.vue';
+import MonsterImage from '../components/battle/UI/MonsterImage.vue';
 import OptionsButton from '../components/battle/UI/OptionsButton.vue';
 
 export default {
-  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu },
+  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage },
   computed: {
     ...mapGetters('battleStats', ['winner', 'inOptionsMenu']),
-    ...mapGetters('playerStats', ['playerActionsVisibility'])
+    ...mapGetters('playerStats', ['playerActionsVisibility']),
+    ...mapGetters("monsterStats", ['monsterImage', 'monsterBackgroundImage']),
   }
 }
 </script>
@@ -58,10 +60,6 @@ export default {
 
 html {
   font-family: "Jost", sans-serif;
-}
-
-body {
-  margin: 0;
 }
 
 .battle-header {
@@ -78,6 +76,12 @@ body {
   margin: 1rem auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 12px;
+}
+
+.background {
+  background-repeat: repeat-x;
+  background-size: auto 100vh;
+  height: 100vh;
 }
 
 section {

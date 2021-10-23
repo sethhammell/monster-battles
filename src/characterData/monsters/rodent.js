@@ -2,7 +2,8 @@ import { BattleAction } from "@/classes/battleAction";
 import { characters } from "@/enums/characters";
 import { monsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/rodent.png';
-const { Character } = require("@/classes/character");
+import backgroundImage  from '@/assets/backgrounds/greenMountain.jpg';
+import { Character } from "@/classes/character";
 
 var monsterAttack = new BattleAction(
   monsterActions.ATTACK,
@@ -24,5 +25,6 @@ export var rodent = new Character(
   100,
   100,
   3,
-  image
+  image,
+  backgroundImage
 );

@@ -27,5 +27,6 @@ header {
   position: relative;
   left: 50%;
   transform: translate(-50%);
+  margin-top: 8px;
 }
 </style>

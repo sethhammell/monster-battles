@@ -30,6 +30,9 @@ export default {
   monsterImage(state) {
     return state.currentMonsterStats.image;
   },
+  monsterBackgroundImage(state) {
+    return state.currentMonsterStats.backgroundImage
+  },
   monsterHealthBarAnimationSpeed(state) {
     return state.monsterHealthBarAnimationSpeed;
   },

@@ -35,6 +35,7 @@ export var player = new Character(
   100,
   3,
   null,
+  null,
   100,
   100,
 )

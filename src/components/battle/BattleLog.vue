@@ -26,6 +26,7 @@ export default {
   display: block;
   padding-left: 1.5rem;
   text-align: left;
+  background-color: white;
   /* outline: #4CAF50 solid 10px; */
   /* text-overflow: ellipsis;
   word-wrap: break-word; */

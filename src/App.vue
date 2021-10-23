@@ -29,6 +29,10 @@
   color: #42b983;
 }
 
+body {
+  margin: 0;
+}
+
 @font-face {
   font-family: "uni05_53";
   src: local("uni05_53"),
