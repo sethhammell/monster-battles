@@ -6,7 +6,8 @@
         <h3>{{ battleResultMessage }}</h3>
       </div>
       <div v-show="battleResultButtonsVisibility">
-        <battle-result-button @click="newGame">{{ newGameText }}</battle-result-button>
+        <battle-result-button v-show="playerWin" @click="nextBattle">{{ nextBattleText }}</battle-result-button>
+        <battle-result-button v-show="monsterWin" @click="resetBattle">{{ resetBattleText }}</battle-result-button>
       </div>
     </div>
   </div>
@@ -21,12 +22,15 @@ export default {
   computed: {
     ...mapGetters("battleStats", ["playerWin", "monsterWin"]),
     ...mapGetters("battleMessages", ["battleResultHeader", "battleResultMessage", "battleResultButtonsVisibility"]),
-    newGameText() {
-      return "NEW GAME";
+    nextBattleText() {
+      return "NEXT BATTLE";
+    },
+    resetBattleText() {
+      return "RETRY";
     }
   },
   methods: {
-    ...mapActions("battleStats", ["newGame"]),
+    ...mapActions("battleStats", ["nextBattle", "resetBattle"]),
     ...mapActions("battleMessages", ["hideBattleResultButtons"])
   },
 };

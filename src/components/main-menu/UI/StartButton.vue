@@ -18,9 +18,9 @@ export default {
   methods: {
     redirectToBattle() {
       this.$router.push("/battle");
-      this.newGame();
+      this.resetBattle();
     },
-    ...mapActions('battleStats', ['newGame'])
+    ...mapActions('battleStats', ['resetBattle'])
   },
 };
 </script>

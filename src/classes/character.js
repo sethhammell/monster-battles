@@ -1,5 +1,5 @@
 export class Character {
-  constructor(name, battleActions, currentHealth, maxHealth, level = 1, image = null, backgroundImage = null, currentMana = 0, maxMana = 0, levelUpAmount = 0.125) {
+  constructor(name, battleActions, currentHealth, maxHealth, level, image, backgroundImage, currentMana, maxMana, levelUpAmount) {
     this.name = name;
     this.battleActions = this.storeBattleActions(battleActions);
     this.battleActionsList = battleActions;
@@ -19,7 +19,7 @@ export class Character {
     return 'Level ' + this.level + ' ' + this.name; 
   }
   levelEffect(val) {
-    return val * (1 + (this.level - 1) * this.levelUpAmount);
+    return Math.round(val * (1 + (this.level - 1) * this.levelUpAmount));
   }
   applyCurrentLevel() {
     this.maxHealth = this.levelEffect(this.baseMaxHealth);

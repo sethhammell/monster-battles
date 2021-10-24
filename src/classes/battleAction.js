@@ -17,9 +17,7 @@ export class BattleAction {
   }
   applyCurrentLevel(level) {
     this.level = level;
-    console.log(this.value)
     this.value = this.levelEffect(this.baseValue);
-    console.log(this.value)
   }
   getActionValue() {
     var min = this.value * (1 - this.variance);

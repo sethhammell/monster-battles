@@ -3,7 +3,7 @@ import { characters } from "@/enums/characters";
 import { monsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/rodent.png';
 import backgroundImage  from '@/assets/backgrounds/greenMountain.jpg';
-import { Character } from "@/classes/character";
+import { Monster } from "@/classes/monster";
 
 var monsterAttack = new BattleAction(
   monsterActions.ATTACK,
@@ -19,7 +19,7 @@ var monsterStrongAttack = new BattleAction(
 
 var monsterBattleActions = [monsterAttack, monsterStrongAttack];
 
-export var rodent = new Character(
+export var rodent = new Monster(
   "Rodent",
   monsterBattleActions,
   100,

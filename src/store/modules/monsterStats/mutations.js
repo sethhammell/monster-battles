@@ -7,7 +7,15 @@ export default {
   decreaseMonsterHealth(state, payload) {
     state.currentMonsterStats.currentHealth = boundedSub(state.currentMonsterStats.currentHealth, payload.value);
   },
-  newGame(state) {
+  nextMonster(state) {
+    state.currentMonsterIndex++
+    if (state.currentMonsterIndex < state.monsters.length)
+    {
+      state.currentMonsterStats = state.monsters[state.currentMonsterIndex];
+    }
+  },
+  resetStats(state) {
     state.currentMonsterStats.currentHealth = state.currentMonsterStats.maxHealth;
+    state.currentMonsterStats.currentMana = state.currentMonsterStats.maxMana;
   }
 }

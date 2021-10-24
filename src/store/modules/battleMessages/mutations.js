@@ -6,7 +6,7 @@ export default {
   logBattleMessage(state, payload) {
     state.battleMessagesLog.unshift(payload.battleMessage);
   },
-  newGame(state) {
+  resetStats(state) {
     state.battleMessagesLog = [];
     state.battleActionsLog = [];
     state.battleAnimationMessage = '';

@@ -2,7 +2,7 @@ import { BattleAction } from "@/classes/battleAction";
 import { characters } from "@/enums/characters";
 import { monsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/mossGolem.png';
-const { Character } = require("@/classes/character");
+import { Monster } from "@/classes/monster";
 
 var monsterAttack = new BattleAction(
   monsterActions.ATTACK,
@@ -18,7 +18,7 @@ var monsterStrongAttack = new BattleAction(
 
 var monsterBattleActions = [monsterAttack, monsterStrongAttack];
 
-export var mossGolem = new Character(
+export var mossGolem = new Monster(
   "Moss Golem",
   monsterBattleActions,
   100,

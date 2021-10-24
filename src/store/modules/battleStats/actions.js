@@ -13,11 +13,18 @@ export default {
     commit('updateWinner', payload)
     dispatch('battleMessages/displayBattleResults', null, { root: true });
   },
-  newGame({ commit, dispatch }) {
-    commit('newGame');
-    commit('playerStats/newGame', null, { root: true });
-    commit('monsterStats/newGame', null, { root: true });
-    commit('battleMessages/newGame', null, { root: true });
+  nextBattle({ commit, dispatch }) {
+    commit('monsterStats/nextMonster', null, { root: true });
+    dispatch('resetStats');
+  },
+  resetBattle({ dispatch }) {
+    dispatch('resetStats');
+  },
+  resetStats({ commit, dispatch }) {
+    commit('resetStats');
+    commit('playerStats/resetStats', null, { root: true });
+    commit('monsterStats/resetStats', null, { root: true });
+    commit('battleMessages/resetStats', null, { root: true });
     dispatch('battleMessages/enemyApproaches', null, { root: true });
   },
   toggleOptionsMenu({ commit }) {

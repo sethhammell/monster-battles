@@ -13,7 +13,7 @@ export default {
   decreasePlayerMana(state, payload) {
     state.playerStats.currentMana = boundedSub(state.playerStats.currentMana, payload.value);
   },
-  newGame(state) {
+  resetStats(state) {
     state.playerStats.currentHealth = state.playerStats.maxHealth;
     state.playerStats.currentMana = state.playerStats.maxMana;
   },

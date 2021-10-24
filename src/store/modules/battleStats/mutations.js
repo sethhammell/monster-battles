@@ -5,7 +5,7 @@ export default {
   updateWinner(state, payload) {
     state.winner = payload.winner;
   },
-  newGame(state) {
+  resetStats(state) {
     state.currentRound = 0;
     state.winner = null;
   },

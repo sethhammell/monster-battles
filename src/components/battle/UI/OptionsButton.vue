@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="toggleOptionsMenu">
+    <button @click="toggleOptionsMenuSynchronous">
       {{ optionsButtonText }}
     </button>
   </div>
@@ -15,6 +15,11 @@ export default {
     optionsButtonText() {
       return "OPTIONS";
     },
+  },
+  methods: {
+    toggleOptionsMenuSynchronous() {
+      this.toggleOptionsMenu;
+    }
   }
 };
 </script>

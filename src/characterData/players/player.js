@@ -1,7 +1,7 @@
 import { BattleAction } from "@/classes/battleAction";
 import { characters } from "@/enums/characters";
 import { playerActions } from "@/enums/playerActions";
-const { Character } = require("@/classes/character");
+const { Player } = require("@/classes/player");
 
 var playerAttack = new BattleAction(
   playerActions.ATTACK,
@@ -28,12 +28,12 @@ var playerHeal = new BattleAction(
 
 var playerBattleActions = [playerAttack, playerSpecialAttack, playerHeal]
 
-export var player = new Character(
+export var player = new Player(
   "You",
   playerBattleActions,
   100,
   100,
-  3,
+  8,
   null,
   null,
   100,
