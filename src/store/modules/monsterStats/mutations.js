@@ -1,4 +1,6 @@
 import { boundedAdd, boundedSub } from "@/helper-functions/boundedOperations";
+import { BattleSpeeds } from "@/enums/battleSpeeds";
+import { boundedDiv, boundedMult } from "@/helper-functions/boundedOperations";
 
 export default {
   increaseMonsterHealth(state, payload) {
@@ -17,5 +19,11 @@ export default {
   resetStats(state) {
     state.currentMonsterStats.currentHealth = state.currentMonsterStats.maxHealth;
     state.currentMonsterStats.currentMana = state.currentMonsterStats.maxMana;
+  },
+  doubleMonsterHealthBarAnimationSpeed(state) {
+    state.monsterHealthBarAnimationSpeed = boundedMult(state.monsterHealthBarAnimationSpeed, 2, BattleSpeeds.MAX_BATTLE_SPEED);
+  },
+  halfMonsterHealthBarAnimationSpeed(state) {
+    state.monsterHealthBarAnimationSpeed = boundedDiv(state.monsterHealthBarAnimationSpeed, 2, BattleSpeeds.MIN_BATTLE_SPEED);
   }
 }

@@ -1,4 +1,4 @@
-import { characters } from "@/enums/characters";
+import { Characters } from "@/enums/characters";
 
 export default {
   currentRound(state) {
@@ -11,10 +11,10 @@ export default {
     return state.inOptionsMenu;
   },
   playerWin(getters) {
-    return getters.winner === characters.PLAYER;
+    return getters.winner === Characters.PLAYER;
   },
   monsterWin(getters) {
-    return getters.winner === characters.MONSTER;
+    return getters.winner === Characters.MONSTER;
   },
   gameOver(getters) {
     return getters.winner !== null;

@@ -7,6 +7,8 @@ import OptionsButton from './components/battle/UI/OptionsButton.vue';
 import OptionsMenuButton from './components/battle/UI/OptionsMenuButton.vue';
 import ActionButton from './components/battle/UI/ActionButton.vue';
 import BattleResultButton from './components/battle/UI/BattleResultButton.vue';
+import BattleSpeedIncreaseButton from './components/battle/UI/BattleSpeedIncreaseButton.vue';
+import BattleSpeedDecreaseButton from './components/battle/UI/BattleSpeedDecreaseButton.vue';
 import HealthBar from './components/battle/UI/HealthBar.vue';
 import ManaBar from './components/battle/UI/ManaBar.vue';
 import MonsterHeader from './components/battle/UI/MonsterHeader.vue';
@@ -27,6 +29,9 @@ const app = createApp(App);
 
 app.component('main-menu-button', MainMenuButton);
 app.component('options-button', OptionsButton);
+app.component('options-menu-button', OptionsMenuButton);
+app.component('battle-speed-increase-button', BattleSpeedIncreaseButton);
+app.component('battle-speed-decrease-button', BattleSpeedDecreaseButton);
 app.component('action-button', ActionButton);
 app.component('battle-result-button', BattleResultButton);
 app.component('health-bar', HealthBar);
@@ -38,7 +43,6 @@ app.component('player-actions', PlayerActions);
 app.component('battle-log', BattleLog);
 app.component('battle-result', BattleResult);
 app.component('options-menu', OptionsMenu);
-app.component('options-menu-button', OptionsMenuButton);
 
 app.component('main-menu-header', MainMenuHeader);
 app.component('start-button', StartButton);

@@ -1,4 +1,4 @@
-import { characters } from "@/enums/characters";
+import { Characters } from "@/enums/characters";
 import { getRandomValue } from "@/helper-functions/rng"
 
 export default {
@@ -9,7 +9,7 @@ export default {
     var actionValue = monsterAction.getActionValue();
     var actionName = monsterAction.name;
 
-    dispatch('endMonsterTurn', { by: characters.MONSTER, type: actionName, value: actionValue });
+    dispatch('endMonsterTurn', { by: Characters.MONSTER, type: actionName, value: actionValue });
   },
   endMonsterTurn({ commit, dispatch }, payload) {
     dispatch('battleMessages/logBattleAction', payload, { root: true });

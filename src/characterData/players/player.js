@@ -1,30 +1,30 @@
 import { BattleAction } from "@/classes/battleAction";
-import { characters } from "@/enums/characters";
-import { playerActions } from "@/enums/playerActions";
+import { Characters } from "@/enums/characters";
+import { PlayerActions } from "@/enums/playerActions";
 const { Player } = require("@/classes/player");
 
 var playerAttack = new BattleAction(
-  playerActions.ATTACK,
+  PlayerActions.ATTACK,
   8,
-  characters.MONSTER,
-)
+  Characters.MONSTER,
+);
 
 var playerSpecialAttack = new BattleAction(
-  playerActions.SPECIAL_ATTACK,
+  PlayerActions.SPECIAL_ATTACK,
   14,
-  characters.MONSTER,
+  Characters.MONSTER,
   1,
   false,
   22
-)
+);
 
 var playerHeal = new BattleAction(
-  playerActions.HEAL,
+  PlayerActions.HEAL,
   14,
-  characters.PLAYER,
+  Characters.PLAYER,
   1,
   true
-)
+);
 
 var playerBattleActions = [playerAttack, playerSpecialAttack, playerHeal]
 
@@ -38,4 +38,4 @@ export var player = new Player(
   null,
   100,
   100,
-)
+);

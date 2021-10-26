@@ -1,5 +1,5 @@
-import { characters } from "@/enums/characters";
-import { playerActions } from "@/enums/playerActions";
+import { Characters } from "@/enums/characters";
+import { PlayerActions } from "@/enums/playerActions";
 
 export default {
   logBattleAction({ commit, rootGetters }, payload) {
@@ -7,12 +7,12 @@ export default {
     const playerName = rootGetters['playerStats/playerName'];
     const monsterName = rootGetters['monsterStats/monsterName'];
 
-    battleAction += payload.by === characters.PLAYER ? playerName : monsterName;
+    battleAction += payload.by === Characters.PLAYER ? playerName : monsterName;
     battleAction += ' ' + payload.type + 'ed ';
-    if (payload.type === playerActions.HEAL) {
+    if (payload.type === PlayerActions.HEAL) {
       battleAction += payload.value + ' health.';
     } else {
-      battleAction += payload.by === characters.PLAYER ? monsterName : playerName;
+      battleAction += payload.by === Characters.PLAYER ? monsterName : playerName;
       battleAction += ' and dealt ' + payload.value + ' damage.';
     }
     commit('logBattleAction', { battleAction: battleAction });

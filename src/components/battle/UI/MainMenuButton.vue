@@ -24,7 +24,6 @@ export default {
 <style scoped>
 button {
   font: inherit;
-  border: 1px solid #88005b;
   background-color: #88005b;
   color: white;
   padding: 1rem 2rem;

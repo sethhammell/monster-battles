@@ -1,20 +1,20 @@
 import { BattleAction } from "@/classes/battleAction";
-import { characters } from "@/enums/characters";
-import { monsterActions } from "@/enums/monsterActions";
+import { Characters } from "@/enums/characters";
+import { MonsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/mossGolem.png';
 import { Monster } from "@/classes/monster";
 
 var monsterAttack = new BattleAction(
-  monsterActions.ATTACK,
+  MonsterActions.ATTACK,
   11,
-  characters.PLAYER,
+  Characters.PLAYER,
 );
 
 var monsterStrongAttack = new BattleAction(
-  monsterActions.STRONG_ATTACK,
+  MonsterActions.STRONG_ATTACK,
   13,
-  characters.PLAYER
-)
+  Characters.PLAYER
+);
 
 var monsterBattleActions = [monsterAttack, monsterStrongAttack];
 

@@ -11,6 +11,8 @@
       </head>
       <body class="background" :style="{ 'background-image': 'url(' + monsterBackgroundImage + ')' }">
         <div class="battle-header">
+          <battle-speed-decrease-button></battle-speed-decrease-button>
+          <battle-speed-increase-button></battle-speed-increase-button>
           <monster-header></monster-header>
           <options-button></options-button>
         </div>
@@ -35,6 +37,8 @@ import BattleLog from '../components/battle/BattleLog.vue';
 import BattleResult from '../components/battle/BattleResult.vue';
 import OptionsMenu from '../components/battle/OptionsMenu.vue';
 import PlayerActions from '../components/battle/PlayerActions.vue';
+import BattleSpeedDecreaseButton from '../components/battle/UI/BattleSpeedDecreaseButton.vue';
+import BattleSpeedIncreaseButton from '../components/battle/UI/BattleSpeedIncreaseButton.vue';
 import HealthBar from '../components/battle/UI/HealthBar.vue';
 import ManaBar from '../components/battle/UI/ManaBar.vue';
 import MonsterHeader from '../components/battle/UI/MonsterHeader.vue';
@@ -42,7 +46,7 @@ import MonsterImage from '../components/battle/UI/MonsterImage.vue';
 import OptionsButton from '../components/battle/UI/OptionsButton.vue';
 
 export default {
-  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage },
+  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage, BattleSpeedIncreaseButton, BattleSpeedDecreaseButton },
   computed: {
     ...mapGetters('battleStats', ['winner', 'inOptionsMenu']),
     ...mapGetters('playerStats', ['playerActionsVisibility']),

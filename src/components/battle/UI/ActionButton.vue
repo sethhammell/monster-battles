@@ -20,7 +20,6 @@ export default {
 <style scoped>
 button {
   font: inherit;
-  border: 1px solid #88005b;
   background-color: #88005b;
   color: white;
   padding: 1rem 2rem;
@@ -29,18 +28,22 @@ button {
   margin: 1rem;
   width: 12rem;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.26);
+  box-shadow: 2px 4px 10px gray;
 }
 
 button:focus {
   outline: none;
 }
 
-button:hover,
 button:active {
-  background-color: #af0a78;
   border-color: #423b3b;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+  background-color: #af0a78;
+  box-shadow: 0 0 0 white;
+  margin-top: 17px;
+}
+
+button:hover {
+  background-color: #af0a78;
 }
 
 button:disabled {

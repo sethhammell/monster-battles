@@ -1,4 +1,4 @@
-import { characters } from '@/enums/characters';
+import { Characters } from '@/enums/characters';
 
 export default {
   playerAction({ commit, dispatch, getters }, payload) {
@@ -12,10 +12,10 @@ export default {
     var increase = playerAction.heal;
 
     commit('decreasePlayerMana', { value: manaCost });
-    dispatch('endPlayerTurn', { by: characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
+    dispatch('endPlayerTurn', { by: Characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
   },
   surrender({ dispatch }) {
-    dispatch('battleStats/updateWinner', { winner: characters.MONSTER }, { root: true });
+    dispatch('battleStats/updateWinner', { winner: Characters.MONSTER }, { root: true });
   },
   endPlayerTurn({ commit, dispatch, rootGetters }, payload) {
     dispatch('battleMessages/logBattleAction', { by: payload.by, type: payload.type, value: payload.value }, { root: true });

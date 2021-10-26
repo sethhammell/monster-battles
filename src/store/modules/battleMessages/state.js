@@ -1,3 +1,5 @@
+import { BattleSpeeds } from "@/enums/battleSpeeds";
+
 export default {
   battleMessagesLog: [],
   battleActionsLog: [],
@@ -5,5 +7,5 @@ export default {
   battleResultHeader: '',
   battleResultMessage: '',
   battleResultButtonsVisibility: false,
-  battleAnimationMessageSpeed: 1 // 32
+  battleAnimationMessageSpeed: BattleSpeeds.START_BATTLE_SPEED,
 }

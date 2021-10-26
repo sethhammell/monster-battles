@@ -1,12 +1,12 @@
-import { characters } from "@/enums/characters";
+import { Characters } from "@/enums/characters";
 
 export default {
   checkForWinner({ dispatch, rootGetters }) {
     if (rootGetters['monsterStats/currentMonsterHealth'] === 0) {
-      dispatch('updateWinner', { winner: characters.PLAYER })
+      dispatch('updateWinner', { winner: Characters.PLAYER })
     }
     else if (rootGetters['playerStats/currentPlayerHealth'] === 0) {
-      dispatch('updateWinner', { winner: characters.MONSTER })
+      dispatch('updateWinner', { winner: Characters.MONSTER })
     }
   },
   updateWinner({ dispatch, commit }, payload) {
@@ -29,5 +29,15 @@ export default {
   },
   toggleOptionsMenu({ commit }) {
     commit('toggleOptionsMenu');
+  },
+  doubleBattleSpeed({ commit }) {
+    commit('battleMessages/doubleBattleAnimationMessageSpeed', null, { root: true });
+    commit('playerStats/doublePlayerHealthBarAnimationSpeed', null, { root: true });
+    commit('monsterStats/doubleMonsterHealthBarAnimationSpeed', null, { root: true });
+  },
+  halfBattleSpeed({ commit }) {
+    commit('battleMessages/halfBattleAnimationMessageSpeed', null, { root: true });
+    commit('playerStats/halfPlayerHealthBarAnimationSpeed', null, { root: true });
+    commit('monsterStats/halfMonsterHealthBarAnimationSpeed', null, { root: true });
   }
 }

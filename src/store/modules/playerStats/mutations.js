@@ -1,4 +1,6 @@
 import { boundedAdd, boundedSub } from "@/helper-functions/boundedOperations";
+import { BattleSpeeds } from "@/enums/battleSpeeds";
+import { boundedDiv, boundedMult } from "@/helper-functions/boundedOperations";
 
 export default {
   increasePlayerHealth(state, payload) {
@@ -22,5 +24,11 @@ export default {
   },
   hidePlayerActions(state) {
     state.playerActionsVisibility = false;
+  },
+  doublePlayerHealthBarAnimationSpeed(state) {
+    state.playerHealthBarAnimationSpeed = boundedMult(state.playerHealthBarAnimationSpeed, 2, BattleSpeeds.MAX_BATTLE_SPEED);
+  },
+  halfPlayerHealthBarAnimationSpeed(state) {
+    state.playerHealthBarAnimationSpeed = boundedDiv(state.playerHealthBarAnimationSpeed, 2, BattleSpeeds.MIN_BATTLE_SPEED);
   }
 }

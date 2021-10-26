@@ -1,7 +1,8 @@
 import { player } from "@/characterData/players/player";
+import { BattleSpeeds } from "@/enums/battleSpeeds";
 
 export default {
   playerStats: player,
   playerActionsVisibility: true,
-  playerHealthBarAnimationSpeed: 1 // 50
+  playerHealthBarAnimationSpeed: BattleSpeeds.START_BATTLE_SPEED
 }
