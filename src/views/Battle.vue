@@ -83,7 +83,7 @@ html {
 }
 
 .background {
-  background-repeat: repeat-x;
+  /* background-repeat: repeat-x; */
   background-size: auto 100vh;
   height: 100vh;
 }
