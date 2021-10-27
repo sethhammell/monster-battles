@@ -2,6 +2,7 @@ import { BattleAction } from "@/classes/battleAction";
 import { Characters } from "@/enums/characters";
 import { MonsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/mossGolem.png';
+import backgroundImage from '@/assets/backgrounds/flatDirtGround.png';
 import { Monster } from "@/classes/monster";
 
 var monsterAttack = new BattleAction(
@@ -24,5 +25,6 @@ export var mossGolem = new Monster(
   100,
   100,
   2,
-  image
+  image,
+  backgroundImage
 );
