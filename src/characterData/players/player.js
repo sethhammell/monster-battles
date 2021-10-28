@@ -26,7 +26,16 @@ var playerHeal = new BattleAction(
   true
 );
 
-var playerBattleActions = [playerAttack, playerSpecialAttack, playerHeal]
+var playerBurstHeal = new BattleAction(
+  PlayerActions.BURST_HEAL,
+  20,
+  Characters.Player,
+  1,
+  true,
+  25
+);
+
+var playerBattleActions = [playerAttack, playerSpecialAttack, playerHeal, playerBurstHeal]
 
 export var player = new Player(
   "You",
