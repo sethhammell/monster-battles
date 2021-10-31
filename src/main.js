@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 
-import App from './App.vue'
+import App from './App.vue';
 
 import MainMenuButton from './components/battle/UI/MainMenuButton.vue';
 import OptionsButton from './components/battle/UI/OptionsButton.vue';

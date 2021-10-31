@@ -12,7 +12,7 @@ import { mapActions } from 'vuex';
 export default {
   computed: {
     optionsButtonText() {
-      return "OPTIONS";
+      return 'OPTIONS';
     },
   },
   methods: {
