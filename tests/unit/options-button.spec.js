@@ -23,7 +23,7 @@ describe('OptionsButton.vue', () => {
   })
 
   it('options button text is OPTIONS', () => {
-    const wrapper =shallowMount(OptionsButton);
+    const wrapper = shallowMount(OptionsButton);
     expect(wrapper.find('button').text()).toBe('OPTIONS');
   })
 });
