@@ -25,15 +25,15 @@ describe('OptionsButton.vue', () => {
     expect(store.getters['battleStats/winner']).toBe(Characters.MONSTER);
   });
 
-  it('updates "playerHealth" getter when "playerHealthBarChangeAnimation" is dispatched', () => {
+  it('updates "playerHealth" getter when "playerHealthBarChangeAnimation" is dispatched', async () => {
     const store = storeCopy();
     const playerHealth = store.getters['playerStats/currentPlayerHealth'];
     console.log(playerHealth)
-    store.dispatch('playerStats/playerHealthBarChangeAnimation', { increase: true, value: 1 });
+    await store.dispatch('playerStats/playerHealthBarChangeAnimation', { increase: true, value: 1 });
     expect(store.getters['playerStats/currentPlayerHealth']).toBe(playerHealth);
-    store.dispatch('playerStats/playerHealthBarChangeAnimation', { increase: false, value: 2 });
+    await store.dispatch('playerStats/playerHealthBarChangeAnimation', { increase: false, value: 2 });
     expect(store.getters['playerStats/currentPlayerHealth']).toBe(playerHealth - 2);
-    store.dispatch('playerStats/playerHealthBarChangeAnimation', { increase: true, value: 1 });
+    await store.dispatch('playerStats/playerHealthBarChangeAnimation', { increase: true, value: 1 });
     expect(store.getters['playerStats/currentPlayerHealth']).toBe(playerHealth - 1);
   });
 });
