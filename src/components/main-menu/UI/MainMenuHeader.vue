@@ -1,8 +1,18 @@
 <template>
   <header>
-    <h1>Welcome to Monster Battles</h1>
+    <h1>{{ mainMenuWelcomeText }}</h1>
   </header>
 </template>
+
+<script>
+export default {
+  computed: {
+    mainMenuWelcomeText() {
+      return "Welcome to Monster Battles";
+    }
+  }
+}
+</script>
 
 <style scoped>
 header {

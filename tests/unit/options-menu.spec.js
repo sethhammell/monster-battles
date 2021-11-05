@@ -30,7 +30,7 @@ describe('OptionsMenu.vue', () => {
 
   it('toggleOptionsMenu is called and router set to main-menu when main menu button is clicked', () => {
     const wrapper = shallowMount(OptionsMenu, { global: { plugins: [ store ], mocks: { $router: mockRouter } } });
-    const childComponent = wrapper.findAllComponents({ name: "OptionsMenuButton" }).at(0);
+    const childComponent = wrapper.findAllComponents({ name: 'OptionsMenuButton' }).at(0);
 
     childComponent.trigger('click');
     expect(battleStatsActions.toggleOptionsMenu).toHaveBeenCalledTimes(1);
@@ -39,7 +39,7 @@ describe('OptionsMenu.vue', () => {
 
   it('toggleOptionsMenu and surrender is called when surrender button is clicked', () => {
     const wrapper = shallowMount(OptionsMenu, { global: { plugins: [ store ] } });
-    const childComponent = wrapper.findAllComponents({ name: "OptionsMenuButton" }).at(1);
+    const childComponent = wrapper.findAllComponents({ name: 'OptionsMenuButton' }).at(1);
 
     childComponent.trigger('click');
     expect(battleStatsActions.toggleOptionsMenu).toHaveBeenCalledTimes(2);
@@ -48,7 +48,7 @@ describe('OptionsMenu.vue', () => {
 
   it('toggleOptionsMenu called when resume button is clicked', () => {
     const wrapper = shallowMount(OptionsMenu, { global: { plugins: [ store ] } });
-    const childComponent = wrapper.findAllComponents({ name: "OptionsMenuButton" }).at(2);
+    const childComponent = wrapper.findAllComponents({ name: 'OptionsMenuButton' }).at(2);
 
     childComponent.trigger('click');
     expect(battleStatsActions.toggleOptionsMenu).toHaveBeenCalledTimes(3);
@@ -61,6 +61,6 @@ describe('OptionsMenu.vue', () => {
 
   it('options menu has three OptionsMenuButtons', () => {
     const wrapper = shallowMount(OptionsMenu);
-    expect(wrapper.findAllComponents({ name: "OptionsMenuButton" }).length).toBe(3);
+    expect(wrapper.findAllComponents({ name: 'OptionsMenuButton' }).length).toBe(3);
   })
 });
