@@ -11,7 +11,7 @@ export default {
     var manaCost = playerAction.manaCost;
     var increase = playerAction.heal;
 
-    commit('decreasePlayerMana', { value: manaCost });
+    commit('decreasePlayerMana', { value: manaCost });    
     dispatch('endPlayerTurn', { by: Characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
   },
   surrender({ dispatch }) {
@@ -21,6 +21,7 @@ export default {
     dispatch('battleMessages/logBattleAction', { by: payload.by, type: payload.type, value: payload.value }, { root: true });
     dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(() => {
       var animationFunction = payload.increase ? 'playerStats/playerHealthBarChangeAnimation' : 'monsterStats/monsterHealthBarChangeAnimation';
+      console.log(animationFunction)
       dispatch(animationFunction, { increase: payload.increase, value: payload.value }, { root: true }).then(() => {
         dispatch('battleStats/checkForWinner', null, { root: true });
         if (rootGetters['battleStats/gameOver']) {
