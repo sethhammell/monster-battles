@@ -1,7 +1,7 @@
 import { Characters } from '@/enums/characters';
 
 export default {
-  playerAction({ commit, dispatch, getters }, payload) {
+  async playerAction({ commit, dispatch, getters }, payload) {
     commit('battleStats/incrementCurrentRound', null, { root: true });
     commit('hidePlayerActions');
 
@@ -12,17 +12,16 @@ export default {
     var increase = playerAction.heal;
 
     commit('decreasePlayerMana', { value: manaCost });    
-    dispatch('endPlayerTurn', { by: Characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
+    await dispatch('endPlayerTurn', { by: Characters.PLAYER, type: payload.action, value: actionValue, increase: increase });
   },
   surrender({ dispatch }) {
     dispatch('battleStats/updateWinner', { winner: Characters.MONSTER }, { root: true });
   },
-  endPlayerTurn({ commit, dispatch, rootGetters }, payload) {
+  async endPlayerTurn({ commit, dispatch, rootGetters }, payload) {
     dispatch('battleMessages/logBattleAction', { by: payload.by, type: payload.type, value: payload.value }, { root: true });
-    dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(() => {
+    await dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(async () => {
       var animationFunction = payload.increase ? 'playerStats/playerHealthBarChangeAnimation' : 'monsterStats/monsterHealthBarChangeAnimation';
-      console.log(animationFunction)
-      dispatch(animationFunction, { increase: payload.increase, value: payload.value }, { root: true }).then(() => {
+      await dispatch(animationFunction, { increase: payload.increase, value: payload.value }, { root: true }).then(() => {
         dispatch('battleStats/checkForWinner', null, { root: true });
         if (rootGetters['battleStats/gameOver']) {
           commit('showPlayerActions');
