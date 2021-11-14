@@ -2,19 +2,19 @@ import { Characters } from "@/enums/characters";
 import { getRandomValue } from "@/helper-functions/rng"
 
 export default {
-  monsterAction({ dispatch, getters }) {
+  async monsterAction({ dispatch, getters }) {
     var randomBattleAction = getRandomValue(0, getters.monsterBattleActionsList.length - 1);
     var monsterAction = getters.monsterBattleActionsList[randomBattleAction];
 
     var actionValue = monsterAction.getActionValue();
     var actionName = monsterAction.name;
 
-    dispatch('endMonsterTurn', { by: Characters.MONSTER, type: actionName, value: actionValue });
+    await dispatch('endMonsterTurn', { by: Characters.MONSTER, type: actionName, value: actionValue });
   },
-  endMonsterTurn({ commit, dispatch }, payload) {
+  async endMonsterTurn({ commit, dispatch }, payload) {
     dispatch('battleMessages/logBattleAction', payload, { root: true });
-    dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(() => {
-      dispatch('playerStats/playerHealthBarChangeAnimation', { increase: false, value: payload.value }, { root: true }).then(() => {
+    await dispatch('battleMessages/battleMessageAnimation', null, { root: true }).then(async () => {
+      await dispatch('playerStats/playerHealthBarChangeAnimation', { increase: false, value: payload.value }, { root: true }).then(() => {
         dispatch('battleStats/checkForWinner', null, { root: true });
         commit('playerStats/showPlayerActions', null, { root: true });
       });
