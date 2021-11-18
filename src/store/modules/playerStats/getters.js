@@ -36,6 +36,9 @@ export default {
   currentPlayerMana(state) {
     return state.playerStats.currentMana;
   },
+  maxPlayerMana(state) {
+    return state.playerStats.maxMana;
+  },
   playerActionsVisibility(state) {
     return state.playerActionsVisibility;
   },

@@ -7,7 +7,7 @@ import { MonsterActions } from "@/enums/monsterActions";
 import { createStore } from 'vuex';
 import { cloneDeep } from 'lodash';
 
-describe('OptionsButton.vue', () => {
+describe('monsterStats', () => {
   const storeCopy = () => {
     return createStore({
       modules: {

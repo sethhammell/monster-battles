@@ -7,7 +7,7 @@ import { PlayerActions } from "@/enums/playerActions";
 import { createStore } from 'vuex';
 import { cloneDeep } from 'lodash';
 
-describe('OptionsButton.vue', () => {
+describe('playerStats', () => {
   const storeCopy = () => {
     return createStore({
       modules: {

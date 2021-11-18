@@ -1,6 +1,10 @@
 import { Characters } from "@/enums/characters";
 
 export default {
+  updateWinner({ dispatch, commit }, payload) {
+    commit('updateWinner', payload)
+    dispatch('battleMessages/displayBattleResults', null, { root: true });
+  },
   checkForWinner({ dispatch, rootGetters }) {
     if (rootGetters['monsterStats/currentMonsterHealth'] === 0) {
       dispatch('updateWinner', { winner: Characters.PLAYER })
@@ -8,10 +12,6 @@ export default {
     else if (rootGetters['playerStats/currentPlayerHealth'] === 0) {
       dispatch('updateWinner', { winner: Characters.MONSTER })
     }
-  },
-  updateWinner({ dispatch, commit }, payload) {
-    commit('updateWinner', payload)
-    dispatch('battleMessages/displayBattleResults', null, { root: true });
   },
   nextBattle({ commit, dispatch }) {
     commit('monsterStats/nextMonster', null, { root: true });

@@ -9,6 +9,12 @@ export default {
   decreaseMonsterHealth(state, payload) {
     state.currentMonsterStats.currentHealth = boundedSub(state.currentMonsterStats.currentHealth, payload.value);
   },
+  increaseMonsterMana(state, payload) {
+    state.currentMonsterStats.currentMana = boundedAdd(state.currentMonsterStats.currentMana, payload.value, state.currentMonsterStats.maxMana);
+  },
+  decreaseMonsterMana(state, payload) {
+    state.currentMonsterStats.currentMana = boundedSub(state.currentMonsterStats.currentMana, payload.value);
+  },
   nextMonster(state) {
     state.currentMonsterIndex++
     if (state.currentMonsterIndex < state.monsters.length)
