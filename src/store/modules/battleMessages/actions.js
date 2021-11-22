@@ -36,12 +36,12 @@ export default {
       }, getters.battleAnimationMessageSpeed);
     });
   },
-  enemyApproaches({ commit, dispatch, rootGetters }) {
+  async enemyApproaches({ commit, dispatch, rootGetters }) {
     var message = 'An enemy ' + rootGetters['monsterStats/monsterName'] + ' approaches.';
     commit('logBattleMessage', { battleMessage: message });
-    dispatch('battleMessageAnimation');
+    await dispatch('battleMessageAnimation');
   },
-  battleResultTextAnimation({ commit, getters }, payload) {
+  async battleResultTextAnimation({ commit, getters }, payload) {
     return new Promise((resolve) => {
       const currentMessage = payload.currentMessage;
       const length = currentMessage.length;
@@ -59,11 +59,11 @@ export default {
       }, getters.battleAnimationMessageSpeed);
     });
   },
-  displayBattleResults({ commit, dispatch, rootGetters }) {
+  async displayBattleResults({ commit, dispatch, rootGetters }) {
     var headerMessage = rootGetters['battleStats/playerWin'] ? 'Victory!' : 'Game Over';
     var resultMessage = rootGetters['battleStats/playerWin'] ? 'You defeated the ' + rootGetters['monsterStats/monsterName'] + '.' : 'You were defeated by the ' + rootGetters['monsterStats/monsterName'] + '.';
-    dispatch('battleResultTextAnimation', { currentMessage: headerMessage, variable: 'BattleResultHeader' }).then(() => {
-      dispatch('battleResultTextAnimation', { currentMessage: resultMessage, variable: 'BattleResultMessage' }).then(() => {
+    await dispatch('battleResultTextAnimation', { currentMessage: headerMessage, variable: 'BattleResultHeader' }).then(async () => {
+      await dispatch('battleResultTextAnimation', { currentMessage: resultMessage, variable: 'BattleResultMessage' }).then(() => {
         commit('showBattleResultButtons');
       });
     });
