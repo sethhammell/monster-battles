@@ -15,7 +15,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import OptionsMenuButton from './UI/OptionsMenuButton.vue';
+import OptionsMenuButton from './UI/header/OptionsMenuButton.vue';
 
 export default {
   components: { OptionsMenuButton },

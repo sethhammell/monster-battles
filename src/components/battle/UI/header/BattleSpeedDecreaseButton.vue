@@ -40,7 +40,7 @@ button {
   box-shadow: 2px 4px 10px gray;
   justify-content: left;
   position: absolute;
-  left: 10rem;
+  left: 4rem;
 }
 
 button:focus {
