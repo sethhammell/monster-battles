@@ -1,6 +1,7 @@
 import { BattleAction } from "@/classes/battleAction";
 import { Characters } from "@/enums/characters";
 import { PlayerActions } from "@/enums/playerActions";
+import { levelToExp } from "@/helper-functions/levelOperations";
 const { Player } = require("@/classes/player");
 
 var playerAttack = new BattleAction(
@@ -42,7 +43,7 @@ export var player = new Player(
   playerBattleActions,
   100,
   100,
-  8,
+  levelToExp(8),
   null,
   null,
   100,

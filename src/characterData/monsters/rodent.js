@@ -4,6 +4,7 @@ import { MonsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/rodent.png';
 import backgroundImage  from '@/assets/backgrounds/greenMountain.jpg';
 import { Monster } from "@/classes/monster";
+import { levelToExp } from "@/helper-functions/levelOperations";
 
 var monsterAttack = new BattleAction(
   MonsterActions.ATTACK,
@@ -24,7 +25,7 @@ export var rodent = new Monster(
   monsterBattleActions,
   100,
   100,
-  3,
+  levelToExp(3),
   image,
   backgroundImage
 );

@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import { createStore } from 'vuex';
-import OptionsButton from '@/components/battle/UI/OptionsButton.vue';
+import OptionsButton from '@/components/battle/UI/header/OptionsButton.vue';
 
 describe('OptionsButton.vue', () => {
   const actions = {

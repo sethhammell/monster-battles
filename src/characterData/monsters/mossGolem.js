@@ -4,6 +4,7 @@ import { MonsterActions } from "@/enums/monsterActions";
 import image from '@/assets/monsters/mossGolem.png';
 import backgroundImage from '@/assets/backgrounds/flatDirtGround.png';
 import { Monster } from "@/classes/monster";
+import { levelToExp } from "@/helper-functions/levelOperations";
 
 var monsterAttack = new BattleAction(
   MonsterActions.ATTACK,
@@ -24,7 +25,7 @@ export var mossGolem = new Monster(
   monsterBattleActions,
   100,
   100,
-  2,
+  levelToExp(2),
   image,
   backgroundImage
 );

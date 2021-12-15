@@ -39,6 +39,9 @@ export default {
   maxPlayerMana(state) {
     return state.playerStats.maxMana;
   },
+  currentPlayerLevel(state) {
+    return state.playerStats.getLevel();
+  },
   playerActionsVisibility(state) {
     return state.playerActionsVisibility;
   },

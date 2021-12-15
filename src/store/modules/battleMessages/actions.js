@@ -62,6 +62,16 @@ export default {
   async displayBattleResults({ commit, dispatch, rootGetters }) {
     var headerMessage = rootGetters['battleStats/playerWin'] ? 'Victory!' : 'Game Over';
     var resultMessage = rootGetters['battleStats/playerWin'] ? 'You defeated the ' + rootGetters['monsterStats/monsterName'] + '.' : 'You were defeated by the ' + rootGetters['monsterStats/monsterName'] + '.';
+    var expMessage = rootGetters['battleStats/playerWin'] ? 'You gained ' + rootGetters['monsterStats/monsterExpDrop'] + ' EXP points!' : '';
+    resultMessage += '\n' + expMessage;
+    var playerLevelBefore = rootGetters['playerStats/currentPlayerLevel'];
+    if (rootGetters['battleStats/playerWin']) {
+      commit('playerStats/increasePlayerExp', { value: rootGetters['monsterStats/monsterExpDrop'] }, { root: true });
+      var playerLevelAfter = rootGetters['playerStats/currentPlayerLevel'];
+      if (playerLevelAfter > playerLevelBefore) {
+        resultMessage += '\n' + 'You reached level ' + playerLevelAfter + '.';
+      }
+    }
     await dispatch('battleResultTextAnimation', { currentMessage: headerMessage, variable: 'BattleResultHeader' }).then(async () => {
       await dispatch('battleResultTextAnimation', { currentMessage: resultMessage, variable: 'BattleResultMessage' }).then(() => {
         commit('showBattleResultButtons');

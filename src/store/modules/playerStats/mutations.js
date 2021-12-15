@@ -30,5 +30,9 @@ export default {
   },
   halfPlayerHealthBarAnimationSpeed(state) {
     state.playerHealthBarAnimationSpeed = boundedDiv(state.playerHealthBarAnimationSpeed, 2, BattleSpeeds.MIN_BATTLE_SPEED);
+  },
+  increasePlayerExp(state, payload) {
+    state.playerStats.exp += payload.value;
+    state.playerStats.applyCurrentLevel();
   }
 }

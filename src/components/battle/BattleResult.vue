@@ -3,7 +3,7 @@
     <div class="popup-content">
       <div>
         <h2>{{ battleResultHeader }}</h2>
-        <h3>{{ battleResultMessage }}</h3>
+        <h3 style="white-space: pre;">{{ battleResultMessage }}</h3>
       </div>
       <div v-show="battleResultButtonsVisibility">
         <battle-result-button v-show="playerWin" @click="nextBattle">{{ nextBattleText }}</battle-result-button>

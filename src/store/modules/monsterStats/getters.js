@@ -1,4 +1,5 @@
 import { threeBarGradient } from "@/helper-functions/gradient";
+import { expGain } from "@/helper-functions/levelOperations";
 
 export default {
   monsterHealthBarStyles(state) {
@@ -38,5 +39,8 @@ export default {
   },
   monsterBattleActionsList(state) {
     return state.currentMonsterStats.battleActionsList;
+  },
+  monsterExpDrop(state) {
+    return expGain(state.currentMonsterStats.exp);
   }
 }

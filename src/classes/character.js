@@ -1,5 +1,7 @@
+import { expToLevel } from "@/helper-functions/levelOperations";
+
 export class Character {
-  constructor(name, battleActions, currentHealth, maxHealth, level, image, backgroundImage, currentMana, maxMana, levelUpAmount) {
+  constructor(name, battleActions, currentHealth, maxHealth, exp, image, backgroundImage, currentMana, maxMana, levelUpAmount) {
     this.name = name;
     this.battleActions = this.storeBattleActions(battleActions);
     this.battleActionsList = battleActions;
@@ -9,17 +11,20 @@ export class Character {
     this.backgroundImage = backgroundImage;
     this.currentMana = currentMana;
     this.maxMana = maxMana;
-    this.level = level;
+    this.exp = exp;
     this.baseMaxHealth = maxHealth;
     this.baseMaxMana = maxMana;
     this.levelUpAmount = levelUpAmount;
     this.applyCurrentLevel()
   }
+  getLevel() {
+    return expToLevel(this.exp);
+  }
   getLevelName() {
-    return 'Level ' + this.level + ' ' + this.name; 
+    return 'Level ' + this.getLevel() + ' ' + this.name; 
   }
   levelEffect(val) {
-    return Math.round(val * (1 + (this.level - 1) * this.levelUpAmount));
+    return Math.round(val * (1 + (this.getLevel() - 1) * this.levelUpAmount));
   }
   applyCurrentLevel() {
     this.maxHealth = this.levelEffect(this.baseMaxHealth);
@@ -27,7 +32,7 @@ export class Character {
     this.maxMana = this.levelEffect(this.baseMaxHealth);
     this.currentMana = this.maxMana;
     for (const battleAction of this.battleActionsList) {
-      battleAction.applyCurrentLevel(this.level);
+      battleAction.applyCurrentLevel(this.exp);
     }
   }
   storeBattleActions(battleActions) {
