@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="battle-speed-controls">
     <battle-speed-decrease-button></battle-speed-decrease-button>
     <current-battle-speed-display></current-battle-speed-display>
     <battle-speed-increase-button></battle-speed-increase-button>
@@ -15,3 +15,9 @@ export default {
   component: { BattleSpeedIncreaseButton, BattleSpeedDecreaseButton, CurrentBattleSpeedDisplay }
 }
 </script>
+
+<style scoped>
+.battle-speed-controls {
+  padding-top: 0rem;
+}
+</style>

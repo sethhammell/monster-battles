@@ -36,5 +36,6 @@ p {
   margin-right: 7rem;
   position: absolute;
   left: 11rem;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.26);
 }
 </style>

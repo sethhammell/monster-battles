@@ -43,6 +43,7 @@ export default {
 
 .healthbar__number {
   position: absolute;
+  color: black;
   padding-top: 2.5rem;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);

@@ -3,7 +3,7 @@ export function levelToExp(level) {
 }
 
 export function expToLevel(exp) {
-  return Math.floor(Math.pow(exp, 1/3));
+  return Math.floor(Math.cbrt(exp));
 }
 
 export function expGain(level) {

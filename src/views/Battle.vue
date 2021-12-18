@@ -12,6 +12,7 @@
       <body class="background" :style="{ 'background-image': 'url(' + monsterBackgroundImage + ')' }">
         <div class="battle-header">
           <battle-speed-controls></battle-speed-controls>
+          <player-experience-bar></player-experience-bar>
           <monster-header></monster-header>
           <options-button></options-button>
         </div>
@@ -42,11 +43,13 @@ import MonsterHeader from '../components/battle/UI/header/MonsterHeader.vue';
 import MonsterImage from '../components/battle/UI/MonsterImage.vue';
 import OptionsButton from '../components/battle/UI/header/OptionsButton.vue';
 import BattleSpeedControls from '../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue';
+import PlayerExperienceBar from '../components/battle/UI/header/PlayerExperienceBar.vue';
 
 export default {
-  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage, BattleSpeedControls },
+  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage, BattleSpeedControls, PlayerExperienceBar },
   computed: {
     ...mapGetters,
+    ...mapGetters('battleStats', ['winner', 'inOptionsMenu']),
     ...mapGetters('playerStats', ['playerActionsVisibility']),
     ...mapGetters("monsterStats", ['monsterImage', 'monsterBackgroundImage']),
   }

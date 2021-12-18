@@ -1,4 +1,5 @@
 import { threeBarGradient } from "@/helper-functions/gradient";
+import { levelToExp } from "../../../helper-functions/levelOperations";
 
 export default {
   playerHealthBarStyles(state) {
@@ -41,6 +42,13 @@ export default {
   },
   currentPlayerLevel(state) {
     return state.playerStats.getLevel();
+  },
+  currentPlayerExp(state) {
+    return state.playerStats.exp;
+  },
+  progressToNextLevel(state) {
+    const level = state.playerStats.getLevel();
+    return (state.playerStats.exp - levelToExp(level)) / (levelToExp(level + 1) - levelToExp(level));
   },
   playerActionsVisibility(state) {
     return state.playerActionsVisibility;
