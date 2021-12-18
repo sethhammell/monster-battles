@@ -3,7 +3,7 @@
     <div class="popup-content">
       <div>
         <h2>{{ battleResultHeader }}</h2>
-        <h3 style="white-space: pre;">{{ battleResultMessage }}</h3>
+        <h3 class="text-wrap">{{ battleResultMessage }}</h3>
       </div>
       <div v-show="battleResultButtonsVisibility">
         <battle-result-button v-show="playerWin" @click="nextBattle">{{ nextBattleText }}</battle-result-button>
@@ -59,5 +59,9 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 12px;
   border-color: #fff;
+}
+
+.text-wrap {
+  white-space: pre-wrap;
 }
 </style>

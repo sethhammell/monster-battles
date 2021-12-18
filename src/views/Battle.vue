@@ -11,9 +11,7 @@
       </head>
       <body class="background" :style="{ 'background-image': 'url(' + monsterBackgroundImage + ')' }">
         <div class="battle-header">
-          <battle-speed-decrease-button></battle-speed-decrease-button>
-          <current-battle-speed-display></current-battle-speed-display>
-          <battle-speed-increase-button></battle-speed-increase-button>
+          <battle-speed-controls></battle-speed-controls>
           <monster-header></monster-header>
           <options-button></options-button>
         </div>
@@ -38,19 +36,17 @@ import BattleLog from '../components/battle/BattleLog.vue';
 import BattleResult from '../components/battle/BattleResult.vue';
 import OptionsMenu from '../components/battle/OptionsMenu.vue';
 import PlayerActions from '../components/battle/PlayerActions.vue';
-import BattleSpeedDecreaseButton from '../components/battle/UI/header/BattleSpeedDecreaseButton.vue';
-import BattleSpeedIncreaseButton from '../components/battle/UI/header/BattleSpeedIncreaseButton.vue';
 import HealthBar from '../components/battle/UI/HealthBar.vue';
 import ManaBar from '../components/battle/UI/ManaBar.vue';
 import MonsterHeader from '../components/battle/UI/header/MonsterHeader.vue';
 import MonsterImage from '../components/battle/UI/MonsterImage.vue';
 import OptionsButton from '../components/battle/UI/header/OptionsButton.vue';
-import CurrentBattleSpeedDisplay from '../components/battle/UI/header/CurrentBattleSpeedDisplay.vue';
+import BattleSpeedControls from '../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue';
 
 export default {
-  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage, BattleSpeedIncreaseButton, BattleSpeedDecreaseButton, CurrentBattleSpeedDisplay },
+  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage, BattleSpeedControls },
   computed: {
-    ...mapGetters('battleStats', ['winner', 'inOptionsMenu']),
+    ...mapGetters,
     ...mapGetters('playerStats', ['playerActionsVisibility']),
     ...mapGetters("monsterStats", ['monsterImage', 'monsterBackgroundImage']),
   }
