@@ -1,14 +1,15 @@
 <template>
   <div class="background" :style="backgroundImageStyle">
     <main-menu-header></main-menu-header>
-    <start-button></start-button>
+    <main-menu-base-button @click="redirectToBattle()">{{ redirectToBattleText }}</main-menu-base-button>
   </div>
 </template>
 
 <script>
 import MainMenuHeader from "../components/main-menu/UI/MainMenuHeader.vue";
-import StartButton from '../components/main-menu/UI/StartButton.vue';
+import MainMenuBaseButton from '../components/main-menu/UI/MainMenuBaseButton.vue';
 import mainMenuBackground from '@/assets/backgrounds/greenMountain.jpg';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -18,7 +19,19 @@ export default {
       }
     }
   },
-  components: { MainMenuHeader, StartButton }
+  components: { MainMenuHeader, MainMenuBaseButton },
+  computed: {
+    redirectToBattleText() {
+      return "START";
+    },
+  },
+  methods: {
+    redirectToBattle() {
+      this.$router.push("/battle");
+      this.resetBattle();
+    },
+    ...mapActions('battleStats', ['resetBattle'])
+  },
 }
 </script>
 

@@ -1,29 +1,10 @@
 <template>
   <div>
-    <button @click="redirectToBattle()">
-      {{ redirectToBattleText }}
+    <button>
+      <slot> </slot>
     </button>
   </div>
 </template>
-
-<script>
-import { mapActions } from 'vuex';
-
-export default {
-  computed: {
-    redirectToBattleText() {
-      return "START";
-    },
-  },
-  methods: {
-    redirectToBattle() {
-      this.$router.push("/battle");
-      this.resetBattle();
-    },
-    ...mapActions('battleStats', ['resetBattle'])
-  },
-};
-</script>
 
 <style scoped>
 button {

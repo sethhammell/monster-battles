@@ -23,7 +23,7 @@ import BattleResult from './components/battle/BattleResult.vue';
 import OptionsMenu from './components/battle/OptionsMenu.vue';
 
 import MainMenuHeader from './components/main-menu/UI/MainMenuHeader.vue';
-import StartButton from './components/main-menu/UI/StartButton.vue';
+import MainMenuBaseButton from './components/main-menu/UI/MainMenuBaseButton.vue';
 
 import router from './router';
 import store from './store';
@@ -51,7 +51,7 @@ app.component('battle-result', BattleResult);
 app.component('options-menu', OptionsMenu);
 
 app.component('main-menu-header', MainMenuHeader);
-app.component('start-button', StartButton);
+app.component('main-menu-base-button', MainMenuBaseButton);
 
 app.use(store);
 app.use(router);
