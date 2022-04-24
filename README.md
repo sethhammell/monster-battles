@@ -2,7 +2,7 @@
 
 ## Link to App
 
-helix48.github.io/monster-battles/
+https://helix48.github.io/monster-battles/#/battle
 
 ## Project setup
 ```
