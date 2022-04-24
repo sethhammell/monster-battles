@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/monster-battles',
   chainWebpack: config => {
     config
       .plugin('html')
