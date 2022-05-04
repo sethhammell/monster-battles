@@ -31,7 +31,7 @@ export default {
       this.resetBattle();
     },
     ...mapActions('battleStats', ['resetBattle'])
-  },
+  }
 }
 </script>
 
