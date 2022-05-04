@@ -4,7 +4,16 @@
 
 https://helix48.github.io/monster-battles/
 
-## Project setup
+## Server setup
+```
+npm install
+```
+### Run server for development
+```
+npm run dev
+```
+
+## Client app setup (run commands in client-app folder)
 ```
 npm install
 ```
