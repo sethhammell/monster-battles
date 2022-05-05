@@ -7,9 +7,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const posts = require('./routes/api/posts');
+const players = require('./routes/api/players');
 
-app.use('/api/posts', posts);
+app.use('/api/players', players);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(__dirname + '/public/'));

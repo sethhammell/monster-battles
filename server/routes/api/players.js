@@ -4,13 +4,13 @@ const mongodb = require('mongodb');
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const posts = await loadPostsCollection();
-  res.send(await posts.find({}).toArray());
+  const players = await loadPlayersCollection();
+  res.send(await players.find({}).toArray());
 });
 
 router.post("/", async (req, res) => {
-  const posts = await loadPostsCollection();
-  await posts.insertOne({
+  const players = await loadPlayersCollection();
+  await players.insertOne({
     text: req.body.text,
     createdAt: new Date(),
   });
@@ -18,19 +18,19 @@ router.post("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const posts = await loadPostsCollection();
-  await posts.deleteOne({ _id: new mongodb.ObjectId(req.params.id) });
+  const players = await loadPlayersCollection();
+  await players.deleteOne({ _id: new mongodb.ObjectId(req.params.id) });
   res.status(200).send();
 });
 
-async function loadPostsCollection() {
+async function loadPlayersCollection() {
   const uri =
     "mongodb+srv://helix:helix@vue-express.pg8oa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
   const client = await mongodb.MongoClient.connect(uri, {
     useNewUrlParser: true,
   });
 
-  return client.db("vue-express").collection("posts");
+  return client.db("vue-express").collection("players");
 }
 
 module.exports = router;

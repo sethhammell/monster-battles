@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-const url = 'api/posts/';
+const url = 'api/players/';
 
-class PostService {
-  static getPosts() {
+class PlayerService {
+  static getPlayers() {
     return new Promise((resolve, reject) => {
       try {
         axios.get(url).then(res => {
           const data = res.data;
           resolve(
-            data.map(post => ({
-              ...post,
-              createdAt: new Date(post.createdAt)
+            data.map(player => ({
+              ...player,
+              createdAt: new Date(player.createdAt)
             }))
           );
         });
@@ -21,15 +21,15 @@ class PostService {
     });
   }
 
-  static insertPost(text) {
+  static insertPlayer(text) {
     return axios.post(url, {
       text
     });
   }
 
-  static deletePost(id) {
+  static deletePlayer(id) {
     return axios.delete(`${url}${id}`);
   }
 }
 
-export default PostService;
+export default PlayerService;
