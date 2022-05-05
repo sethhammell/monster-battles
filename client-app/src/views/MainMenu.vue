@@ -10,6 +10,7 @@ import MainMenuHeader from "../components/main-menu/UI/MainMenuHeader.vue";
 import MainMenuBaseButton from '../components/main-menu/UI/MainMenuBaseButton.vue';
 import mainMenuBackground from '@/assets/backgrounds/greenMountain.jpg';
 import { mapActions } from 'vuex';
+import PlayerService from './../services/PlayerService';
 
 export default {
   data() {
@@ -31,6 +32,10 @@ export default {
       this.resetBattle();
     },
     ...mapActions('battleStats', ['resetBattle'])
+  },
+  async mounted() {
+    const test = await PlayerService.getPlayers();
+    console.log(test);
   }
 }
 </script>

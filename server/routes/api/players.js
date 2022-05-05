@@ -1,5 +1,5 @@
-const express = require('express');
-const mongodb = require('mongodb');
+const express = require("express");
+const mongodb = require("mongodb");
 
 const router = express.Router();
 
@@ -11,8 +11,9 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   const players = await loadPlayersCollection();
   await players.insertOne({
-    text: req.body.text,
+    exp: req.body.exp,
     createdAt: new Date(),
+    updatedAt: new Date(),
   });
   res.status(201).send();
 });

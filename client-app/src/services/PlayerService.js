@@ -1,29 +1,30 @@
-import axios from 'axios';
+import axios from "axios";
 
-const url = 'api/players/';
+const url = "api/players/";
 
 class PlayerService {
   static getPlayers() {
     return new Promise((resolve, reject) => {
       try {
-        axios.get(url).then(res => {
+        axios.get(url).then((res) => {
           const data = res.data;
           resolve(
-            data.map(player => ({
+            data.map((player) => ({
               ...player,
-              createdAt: new Date(player.createdAt)
+              createdAt: new Date(player.createdAt),
+              updatedAt: new Date(player.updatedAt),
             }))
           );
         });
-      } catch(err) {
+      } catch (err) {
         reject(err);
       }
     });
   }
 
-  static insertPlayer(text) {
+  static insertPlayer(exp) {
     return axios.post(url, {
-      text
+      exp,
     });
   }
 
