@@ -8,9 +8,15 @@ router.get("/", async (req, res) => {
   res.send(await players.find({}).toArray());
 });
 
+router.get("/:name", async (req, res) => {
+  const players = await loadPlayersCollection();
+  res.send(await players.findOne({ name: req.params.name }));
+});
+
 router.post("/", async (req, res) => {
   const players = await loadPlayersCollection();
   await players.insertOne({
+    name: req.body.name,
     exp: req.body.exp,
     createdAt: new Date(),
     updatedAt: new Date(),
