@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button>
+    <button @clicked="$emit('clicked')">
       <slot> </slot>
     </button>
   </div>
@@ -18,7 +18,6 @@ button {
   margin: 0.5rem;
   box-shadow: 2px 4px 10px gray;
 }
-
 
 button:focus {
   outline: none;

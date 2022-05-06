@@ -5,9 +5,9 @@
         <h2>{{ optionsMenuHeaderText }}</h2>
       </div>
       <div>
-        <options-menu-button @click="redirectToMainMenu">{{ redirectToMainMenuText }}</options-menu-button>
-        <options-menu-button @click="optionsSurrender">{{ surrenderText }}</options-menu-button>
-        <options-menu-button @click="toggleOptionsMenu">{{ resumeButtonText }}</options-menu-button>
+        <options-menu-button @clicked="redirectToMainMenu">{{ redirectToMainMenuText }}</options-menu-button>
+        <options-menu-button @clicked="optionsSurrender">{{ surrenderText }}</options-menu-button>
+        <options-menu-button @clicked="toggleOptionsMenu">{{ resumeButtonText }}</options-menu-button>
       </div>
     </div>
   </div>
