@@ -24,6 +24,7 @@ import OptionsMenu from './components/battle/OptionsMenu.vue';
 
 import MainMenuHeader from './components/main-menu/UI/MainMenuHeader.vue';
 import MainMenuBaseButton from './components/main-menu/UI/MainMenuBaseButton.vue';
+import MainMenuNameInput from './components/main-menu/UI/MainMenuNameInput.vue';
 
 import router from './router';
 import store from './store';
@@ -52,6 +53,7 @@ app.component('options-menu', OptionsMenu);
 
 app.component('main-menu-header', MainMenuHeader);
 app.component('main-menu-base-button', MainMenuBaseButton);
+app.component('main-menu-name-input', MainMenuNameInput);
 
 app.use(store);
 app.use(router);

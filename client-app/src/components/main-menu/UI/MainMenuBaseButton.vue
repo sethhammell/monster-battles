@@ -1,10 +1,21 @@
 <template>
   <div>
-    <button @click="$emit('clicked')">
+    <button :disabled="disable" @click="$emit('clicked')">
       <slot> </slot>
     </button>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    disable: {
+      type: Boolean,
+      default: false
+    },
+  },
+};
+</script>
 
 <style scoped>
 button {
@@ -34,5 +45,13 @@ button:active {
 
 button:hover {
   background-color: #af0a78;
+}
+
+button:disabled {
+  background-color: #ccc;
+  border-color: #423b3b;
+  box-shadow: none;
+  color: #3f3f3f;
+  cursor: not-allowed;
 }
 </style>
