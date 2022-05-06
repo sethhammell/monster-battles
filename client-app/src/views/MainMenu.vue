@@ -1,7 +1,7 @@
 <template>
   <div class="background" :style="backgroundImageStyle">
     <main-menu-header></main-menu-header>
-    <main-menu-base-button @click="redirectToBattle()">{{ redirectToBattleText }}</main-menu-base-button>
+    <main-menu-base-button @clicked="redirectToBattle">{{ redirectToBattleText }}</main-menu-base-button>
   </div>
 </template>
 
