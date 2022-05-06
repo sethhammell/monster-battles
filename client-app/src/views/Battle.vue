@@ -9,7 +9,10 @@
           rel="stylesheet"
         />
       </head>
-      <body class="background" :style="{ 'background-image': 'url(' + monsterBackgroundImage + ')' }">
+      <body
+        class="background"
+        :style="{ 'background-image': 'url(' + monsterBackgroundImage + ')' }"
+      >
         <div class="battle-header">
           <battle-speed-controls></battle-speed-controls>
           <player-experience-bar></player-experience-bar>
@@ -32,28 +35,55 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import BattleLog from '../components/battle/BattleLog.vue';
-import BattleResult from '../components/battle/BattleResult.vue';
-import OptionsMenu from '../components/battle/OptionsMenu.vue';
-import PlayerActions from '../components/battle/PlayerActions.vue';
-import HealthBar from '../components/battle/UI/HealthBar.vue';
-import ManaBar from '../components/battle/UI/ManaBar.vue';
-import MonsterHeader from '../components/battle/UI/header/MonsterHeader.vue';
-import MonsterImage from '../components/battle/UI/MonsterImage.vue';
-import OptionsButton from '../components/battle/UI/header/OptionsButton.vue';
-import BattleSpeedControls from '../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue';
-import PlayerExperienceBar from '../components/battle/UI/header/PlayerExperienceBar.vue';
+import { mapActions, mapGetters } from "vuex";
+import BattleLog from "../components/battle/BattleLog.vue";
+import BattleResult from "../components/battle/BattleResult.vue";
+import OptionsMenu from "../components/battle/OptionsMenu.vue";
+import PlayerActions from "../components/battle/PlayerActions.vue";
+import HealthBar from "../components/battle/UI/HealthBar.vue";
+import ManaBar from "../components/battle/UI/ManaBar.vue";
+import MonsterHeader from "../components/battle/UI/header/MonsterHeader.vue";
+import MonsterImage from "../components/battle/UI/MonsterImage.vue";
+import OptionsButton from "../components/battle/UI/header/OptionsButton.vue";
+import BattleSpeedControls from "../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue";
+import PlayerExperienceBar from "../components/battle/UI/header/PlayerExperienceBar.vue";
+import PlayerService from "./../services/PlayerService";
 
 export default {
-  components: { PlayerActions, BattleLog, HealthBar, MonsterHeader, BattleResult, ManaBar, OptionsButton, OptionsMenu, MonsterImage, BattleSpeedControls, PlayerExperienceBar },
+  components: {
+    PlayerActions,
+    BattleLog,
+    HealthBar,
+    MonsterHeader,
+    BattleResult,
+    ManaBar,
+    OptionsButton,
+    OptionsMenu,
+    MonsterImage,
+    BattleSpeedControls,
+    PlayerExperienceBar,
+  },
   computed: {
     ...mapGetters,
-    ...mapGetters('battleStats', ['winner', 'inOptionsMenu']),
-    ...mapGetters('playerStats', ['playerActionsVisibility']),
-    ...mapGetters("monsterStats", ['monsterImage', 'monsterBackgroundImage']),
-  }
-}
+    ...mapGetters("battleStats", ["winner", "inOptionsMenu"]),
+    ...mapGetters("playerStats", ["playerActionsVisibility", "playerName"]),
+    ...mapGetters("monsterStats", ["monsterImage", "monsterBackgroundImage"]),
+  },
+  methods: {
+    ...mapActions("playerStats", ["setPlayerExp"]),
+  },
+  async mounted() {
+    if (this.playerName !== '') {
+      const player = await PlayerService.getPlayer(this.playerName);
+      if (player) {
+        this.setPlayerExp({ value: player.exp });
+      }
+    }
+    else {
+      this.$router.push("/main-menu");
+    }
+  },
+};
 </script>
 
 <style scoped>

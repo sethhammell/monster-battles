@@ -26,12 +26,16 @@ class PlayerService {
     return new Promise((resolve, reject) => {
       try {
         axios.get(`${url}${name}`).then((res) => {
-          const player = res.data;
-          resolve({
-            ...player,
-            createdAt: new Date(player.createdAt),
-            updatedAt: new Date(player.updatedAt),
-          });
+          const playerData =
+            Array.isArray(res.data) && res.data.length ? res.data[0] : res.data;
+          const player = playerData
+            ? {
+                ...playerData,
+                createdAt: new Date(playerData.createdAt),
+                updatedAt: new Date(playerData.updatedAt),
+              }
+            : null;
+          resolve(player);
         });
       } catch (err) {
         reject(err);

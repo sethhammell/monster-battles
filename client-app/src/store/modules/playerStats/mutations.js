@@ -35,6 +35,10 @@ export default {
     state.playerStats.exp += payload.value;
     state.playerStats.applyCurrentLevel();
   },
+  setPlayerExp(state, payload) {
+    state.playerStats.exp = payload.value;
+    state.playerStats.applyCurrentLevel();
+  },
   setPlayerName(state, payload) {
     state.playerStats.name = payload.value;
   }
