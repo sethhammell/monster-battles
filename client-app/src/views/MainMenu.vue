@@ -2,10 +2,10 @@
   <div class="background" :style="backgroundImageStyle">
     <main-menu-header />
     <main-menu-name-input
-      :value="username"
-      @input="(e) => (username = e.target.value)"
+      :value="playerName"
+      @input="(e) => (setPlayerName({ name: e.target.value}))"
     />
-    <main-menu-base-button :disable="username === ''" @clicked="redirectToBattle">{{
+    <main-menu-base-button :disable="playerName === ''" @clicked="redirectToBattle">{{
       redirectToBattleText
     }}</main-menu-base-button>
   </div>
@@ -15,7 +15,7 @@
 import MainMenuHeader from "../components/main-menu/UI/MainMenuHeader.vue";
 import MainMenuBaseButton from "../components/main-menu/UI/MainMenuBaseButton.vue";
 import mainMenuBackground from "@/assets/backgrounds/greenMountain.jpg";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import PlayerService from "./../services/PlayerService";
 import MainMenuNameInput from "../components/main-menu/UI/MainMenuNameInput.vue";
 
@@ -24,8 +24,7 @@ export default {
     return {
       backgroundImageStyle: {
         backgroundImage: `url(${mainMenuBackground})`,
-      },
-      username: ''
+      }
     };
   },
   components: { MainMenuHeader, MainMenuBaseButton, MainMenuNameInput },
@@ -33,14 +32,15 @@ export default {
     redirectToBattleText() {
       return "START";
     },
+    ...mapGetters("playerStats", ["playerName"])
   },
   methods: {
     redirectToBattle() {
-      console.log(this.username);
       this.$router.push("/battle");
       this.resetBattle();
     },
     ...mapActions("battleStats", ["resetBattle"]),
+    ...mapActions("playerStats", ["setPlayerName"]),
   },
   async mounted() {
     const test = await PlayerService.getPlayers();

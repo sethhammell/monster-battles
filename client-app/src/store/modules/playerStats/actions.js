@@ -59,5 +59,8 @@ export default {
         }
       }, getters.playerHealthBarAnimationSpeed);
     });
+  },
+  setPlayerName({ commit }, payload) {
+    commit('setPlayerName', { value: payload.name });
   }
 }

@@ -39,7 +39,7 @@ var playerBurstHeal = new BattleAction(
 var playerBattleActions = [playerAttack, playerSpecialAttack, playerHeal, playerBurstHeal]
 
 export var player = new Player(
-  "You",
+  "",
   playerBattleActions,
   100,
   100,
