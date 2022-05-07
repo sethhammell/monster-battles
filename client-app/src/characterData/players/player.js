@@ -6,13 +6,13 @@ const { Player } = require("@/classes/player");
 
 var playerAttack = new BattleAction(
   PlayerActions.ATTACK,
-  8,
+  10,
   Characters.MONSTER,
 );
 
 var playerSpecialAttack = new BattleAction(
   PlayerActions.SPECIAL_ATTACK,
-  14,
+  16,
   Characters.MONSTER,
   1,
   false,
@@ -21,7 +21,7 @@ var playerSpecialAttack = new BattleAction(
 
 var playerHeal = new BattleAction(
   PlayerActions.HEAL,
-  14,
+  15,
   Characters.PLAYER,
   1,
   true
@@ -29,7 +29,7 @@ var playerHeal = new BattleAction(
 
 var playerBurstHeal = new BattleAction(
   PlayerActions.BURST_HEAL,
-  20,
+  40,
   Characters.Player,
   1,
   true,
