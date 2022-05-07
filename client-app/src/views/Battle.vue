@@ -54,8 +54,8 @@ import OptionsButton from "../components/battle/UI/header/OptionsButton.vue";
 import BattleSpeedControls from "../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue";
 import PlayerExperienceBar from "../components/battle/UI/header/PlayerExperienceBar.vue";
 import PlayerService from "./../services/PlayerService";
-import Loading from "vue3-loading-overlay";
-import "vue3-loading-overlay/dist/vue3-loading-overlay.css";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   data() {
