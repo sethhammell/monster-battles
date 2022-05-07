@@ -16,7 +16,7 @@ var playerSpecialAttack = new BattleAction(
   Characters.MONSTER,
   1,
   false,
-  22
+  20
 );
 
 var playerHeal = new BattleAction(
@@ -43,7 +43,7 @@ export var player = new Player(
   playerBattleActions,
   100,
   100,
-  levelToExp(8),
+  levelToExp(1),
   null,
   null,
   100,
