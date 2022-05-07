@@ -43,16 +43,16 @@ class PlayerService {
     });
   }
 
-  static updatePlayer(name, exp) {
+  static updatePlayer(name, exp, currentMonsterIndex) {
     return axios.put(`${url}${name}`, {
       exp,
+      currentMonsterIndex
     });
   }
 
-  static insertPlayer(name, exp) {
+  static insertPlayer(name) {
     return axios.post(url, {
       name,
-      exp,
     });
   }
 

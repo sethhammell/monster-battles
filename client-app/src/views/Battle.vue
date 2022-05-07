@@ -77,6 +77,7 @@ export default {
   },
   methods: {
     ...mapActions("playerStats", ["setPlayerExp"]),
+    ...mapActions("monsterStats", ["nextMonster", "setCurrentMonster"]),
   },
   async mounted() {
     if (this.playerName !== "") {
@@ -89,12 +90,10 @@ export default {
       const player = await PlayerService.getPlayer(this.playerName);
       if (player) {
         this.setPlayerExp({ value: player.exp });
+        this.setCurrentMonster({ value: player.currentMonsterIndex });
       } else {
         this.setPlayerExp({ value: 1 });
-        await PlayerService.insertPlayer(
-          this.playerName,
-          this.currentPlayerExp
-        );
+        await PlayerService.insertPlayer(this.playerName);
       }
       loader.hide();
     } else {

@@ -17,7 +17,12 @@ router.put("/:name", async (req, res) => {
   const players = await loadPlayersCollection();
   const update = await players.updateOne(
     { name: req.params.name },
-    { $set: { exp: req.body.exp } }
+    {
+      $set: {
+        exp: req.body.exp,
+        currentMonsterIndex: req.body.currentMonsterIndex,
+      },
+    }
   );
   update.matchedCount ? res.status(204).send() : res.status(404).send();
 });
@@ -26,7 +31,8 @@ router.post("/", async (req, res) => {
   const players = await loadPlayersCollection();
   await players.insertOne({
     name: req.body.name,
-    exp: req.body.exp,
+    exp: 1,
+    currentMonsterIndex: 0,
     createdAt: new Date(),
     updatedAt: new Date(),
   });

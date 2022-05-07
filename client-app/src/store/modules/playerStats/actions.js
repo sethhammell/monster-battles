@@ -80,9 +80,14 @@ export default {
       }, getters.playerHealthBarAnimationSpeed);
     });
   },
-  async increasePlayerExp({ commit, getters }, payload) {
+  async increasePlayerExp({ commit, getters, rootGetters }, payload) {
+    commit("monsterStats/nextMonster", null, { root: true });
     commit("increasePlayerExp", { value: payload.value });
-    await PlayerService.updatePlayer(getters.playerName, getters.currentPlayerExp);
+    await PlayerService.updatePlayer(
+      getters.playerName,
+      getters.currentPlayerExp,
+      rootGetters["monsterStats/currentMonsterIndex"]
+    );
   },
   setPlayerExp({ commit }, payload) {
     commit("setPlayerExp", { value: payload.value });

@@ -42,5 +42,8 @@ export default {
   },
   monsterExpDrop(state) {
     return expGain(state.currentMonsterStats.exp);
+  },
+  currentMonsterIndex(state) {
+    return state.currentMonsterIndex;
   }
 }
