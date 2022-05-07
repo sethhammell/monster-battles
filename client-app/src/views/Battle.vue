@@ -48,6 +48,8 @@ import OptionsButton from "../components/battle/UI/header/OptionsButton.vue";
 import BattleSpeedControls from "../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue";
 import PlayerExperienceBar from "../components/battle/UI/header/PlayerExperienceBar.vue";
 import PlayerService from "./../services/PlayerService";
+import { useLoading } from "vue3-loading-overlay";
+import "vue3-loading-overlay/dist/vue3-loading-overlay.css";
 
 export default {
   components: {
@@ -78,15 +80,23 @@ export default {
   },
   async mounted() {
     if (this.playerName !== "") {
+      const loader = useLoading();
+      loader.show({
+        color: "#007bff",
+        height: 128,
+        width: 128,
+      });
       const player = await PlayerService.getPlayer(this.playerName);
       if (player) {
         this.setPlayerExp({ value: player.exp });
       } else {
+        this.setPlayerExp({ value: 1 });
         await PlayerService.insertPlayer(
           this.playerName,
           this.currentPlayerExp
         );
       }
+      loader.hide();
     } else {
       this.$router.push("/main-menu");
     }
