@@ -28,7 +28,6 @@ import MainMenuNameInput from "./components/main-menu/UI/MainMenuNameInput.vue";
 
 import router from "./router";
 import store from "./store";
-import LoadingVue from "vue3-loading-overlay";
 
 const app = createApp(App);
 
@@ -58,6 +57,5 @@ app.component("main-menu-name-input", MainMenuNameInput);
 
 app.use(store);
 app.use(router);
-app.use(LoadingVue);
 
 app.mount("#app");

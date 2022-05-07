@@ -31,6 +31,12 @@
         </div>
       </body>
     </html>
+    <loading
+      :active="isLoading"
+      color="#007bff"
+      :height="128"
+      :width="128"
+    ></loading>
   </div>
 </template>
 
@@ -48,10 +54,15 @@ import OptionsButton from "../components/battle/UI/header/OptionsButton.vue";
 import BattleSpeedControls from "../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue";
 import PlayerExperienceBar from "../components/battle/UI/header/PlayerExperienceBar.vue";
 import PlayerService from "./../services/PlayerService";
-import { useLoading } from "vue3-loading-overlay";
+import Loading from "vue3-loading-overlay";
 import "vue3-loading-overlay/dist/vue3-loading-overlay.css";
 
 export default {
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   components: {
     PlayerActions,
     BattleLog,
@@ -64,6 +75,7 @@ export default {
     MonsterImage,
     BattleSpeedControls,
     PlayerExperienceBar,
+    Loading,
   },
   computed: {
     ...mapGetters,
@@ -81,12 +93,7 @@ export default {
   },
   async mounted() {
     if (this.playerName !== "") {
-      this.$loading = useLoading();
-      this.$loading.show({
-        color: "#007bff",
-        height: 128,
-        width: 128,
-      });
+      this.isLoading = true;
       const player = await PlayerService.getPlayer(this.playerName);
       if (player) {
         this.setPlayerExp({ value: player.exp });
@@ -96,7 +103,7 @@ export default {
         this.setCurrentMonster({ value: 0 });
         await PlayerService.insertPlayer(this.playerName);
       }
-      this.$loading.hide({});
+      this.isLoading = false;
     } else {
       this.$router.push("/main-menu");
     }
