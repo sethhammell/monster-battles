@@ -1,4 +1,5 @@
 import { Characters } from "@/enums/characters";
+import PlayerService from "../../../services/PlayerService";
 
 export default {
   async playerAction({ commit, dispatch, getters }, payload) {
@@ -79,8 +80,9 @@ export default {
       }, getters.playerHealthBarAnimationSpeed);
     });
   },
-  increasePlayerExp({ commit }, payload) {
+  async increasePlayerExp({ commit, getters }, payload) {
     commit("increasePlayerExp", { value: payload.value });
+    await PlayerService.updatePlayer(getters.playerName, getters.currentPlayerExp);
   },
   setPlayerExp({ commit }, payload) {
     commit("setPlayerExp", { value: payload.value });

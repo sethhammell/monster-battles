@@ -49,8 +49,9 @@ class PlayerService {
     });
   }
 
-  static insertPlayer(exp) {
+  static insertPlayer(name, exp) {
     return axios.post(url, {
+      name,
       exp,
     });
   }

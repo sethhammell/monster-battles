@@ -66,7 +66,7 @@ export default {
     resultMessage += '\n' + expMessage;
     var playerLevelBefore = rootGetters['playerStats/currentPlayerLevel'];
     if (rootGetters['battleStats/playerWin']) {
-      commit('playerStats/increasePlayerExp', { value: rootGetters['monsterStats/monsterExpDrop'] }, { root: true });
+      dispatch('playerStats/increasePlayerExp', { value: rootGetters['monsterStats/monsterExpDrop'] }, { root: true });
       var playerLevelAfter = rootGetters['playerStats/currentPlayerLevel'];
       if (playerLevelAfter > playerLevelBefore) {
         resultMessage += '\n' + 'You reached level ' + playerLevelAfter + '.';
