@@ -81,8 +81,8 @@ export default {
   },
   async mounted() {
     if (this.playerName !== "") {
-      const loader = useLoading();
-      loader.show({
+      this.$loading = useLoading();
+      this.$loading.show({
         color: "#007bff",
         height: 128,
         width: 128,
@@ -93,9 +93,10 @@ export default {
         this.setCurrentMonster({ value: player.currentMonsterIndex });
       } else {
         this.setPlayerExp({ value: 1 });
+        this.setCurrentMonster({ value: 0 });
         await PlayerService.insertPlayer(this.playerName);
       }
-      loader.hide({});
+      this.$loading.hide({});
     } else {
       this.$router.push("/main-menu");
     }
