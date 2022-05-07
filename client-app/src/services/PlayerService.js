@@ -43,6 +43,12 @@ class PlayerService {
     });
   }
 
+  static updatePlayer(name, exp) {
+    return axios.put(`${url}${name}`, {
+      exp,
+    });
+  }
+
   static insertPlayer(exp) {
     return axios.post(url, {
       exp,
