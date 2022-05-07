@@ -95,7 +95,7 @@ export default {
         this.setPlayerExp({ value: 1 });
         await PlayerService.insertPlayer(this.playerName);
       }
-      loader.hide();
+      loader.hide({});
     } else {
       this.$router.push("/main-menu");
     }
