@@ -66,20 +66,28 @@ export default {
   computed: {
     ...mapGetters,
     ...mapGetters("battleStats", ["winner", "inOptionsMenu"]),
-    ...mapGetters("playerStats", ["playerActionsVisibility", "playerName"]),
+    ...mapGetters("playerStats", [
+      "playerActionsVisibility",
+      "playerName",
+      "currentPlayerExp",
+    ]),
     ...mapGetters("monsterStats", ["monsterImage", "monsterBackgroundImage"]),
   },
   methods: {
     ...mapActions("playerStats", ["setPlayerExp"]),
   },
   async mounted() {
-    if (this.playerName !== '') {
+    if (this.playerName !== "") {
       const player = await PlayerService.getPlayer(this.playerName);
       if (player) {
         this.setPlayerExp({ value: player.exp });
+      } else {
+        await PlayerService.insertPlayer(
+          this.playerName,
+          this.currentPlayerExp
+        );
       }
-    }
-    else {
+    } else {
       this.$router.push("/main-menu");
     }
   },
