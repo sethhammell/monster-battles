@@ -53,7 +53,7 @@ import MonsterImage from "../components/battle/UI/MonsterImage.vue";
 import OptionsButton from "../components/battle/UI/header/OptionsButton.vue";
 import BattleSpeedControls from "../components/battle/UI/header/battleSpeedControls/BattleSpeedControls.vue";
 import PlayerExperienceBar from "../components/battle/UI/header/PlayerExperienceBar.vue";
-import PlayerService from "./../services/PlayerService";
+import PlayerService from "../services/PlayerService";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 

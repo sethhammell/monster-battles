@@ -1,15 +1,16 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { ObjectId } from "mongodb";
 
-const url = "api/players/";
+const url: string = "api/players/";
 
 class PlayerService {
-  static getPlayers() {
+  static getPlayers(): Promise<unknown> {
     return new Promise((resolve, reject) => {
       try {
         axios.get(url).then((res) => {
           const data = res.data;
           resolve(
-            data.map((player) => ({
+            data.map((player: Player) => ({
               ...player,
               createdAt: new Date(player.createdAt),
               updatedAt: new Date(player.updatedAt),
@@ -22,7 +23,7 @@ class PlayerService {
     });
   }
 
-  static getPlayer(name) {
+  static getPlayer(name: string): Promise<unknown> {
     return new Promise((resolve, reject) => {
       try {
         axios.get(`${url}${name}`).then((res) => {
@@ -43,22 +44,31 @@ class PlayerService {
     });
   }
 
-  static updatePlayer(name, exp, currentMonsterIndex) {
+  static updatePlayer(name: string, exp: number, currentMonsterIndex: number): Promise<AxiosResponse<any, any>> {
     return axios.put(`${url}${name}`, {
       exp,
       currentMonsterIndex
     });
   }
 
-  static insertPlayer(name) {
+  static insertPlayer(name: string): Promise<AxiosResponse<any, any>> {
     return axios.post(url, {
       name,
     });
   }
 
-  static deletePlayer(id) {
+  static deletePlayer(id: ObjectId): Promise<AxiosResponse<any, any>> {
     return axios.delete(`${url}${id}`);
   }
+}
+
+interface Player {
+  _id: ObjectId;
+  name: string;
+  exp: number;
+  currentMonsterIndex: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default PlayerService;
