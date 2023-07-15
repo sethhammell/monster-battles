@@ -1,8 +1,6 @@
 # monster-battles
 
-## Link to App
-
-https://monster-battles.herokuapp.com/
+Turn-based fighting game made in Vue.js and Express.js
 
 ## Server setup
 ```
