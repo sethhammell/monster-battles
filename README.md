@@ -2,34 +2,20 @@
 
 Turn-based fighting game made in Vue.js and Express.js
 
-## Server setup
-```
-npm install
-```
-### Run server for development
-```
-npm run dev
-```
+### `npm install`
 
-## Client app setup (run commands in client-app folder)
-```
-npm install
-```
+Installs the required dependencies for the project.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Server Scripts
 
-### Compiles and minifies for production
-```
-npm run build
-```
+In the server directory, you can run:
 
-### Lints and fixes files
-```
-npm run lint
-```
+### `node index.js`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Starts the backend server.
+
+In the client-app directory, you can run:
+
+### `npm run dev`
+
+Starts the client app.
