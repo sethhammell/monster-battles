@@ -14,6 +14,8 @@ In the server directory, you can run:
 
 Starts the backend server.
 
+## Client Scripts
+
 In the client-app directory, you can run:
 
 ### `npm run dev`
